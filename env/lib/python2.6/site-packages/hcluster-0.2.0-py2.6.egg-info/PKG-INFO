@@ -1,0 +1,32 @@
+Metadata-Version: 1.0
+Name: hcluster
+Version: 0.2.0
+Summary: A hierarchical clustering package for Scipy.
+Home-page: http://scipy-cluster.googlecode.com
+Author: Damian Eads
+Author-email: damian XDOTX eads XATX gmail XDOTX com
+License: New BSD License
+Description: 
+        This library provides Python functions for hierarchical clustering. Its features
+        include
+        
+        * generating hierarchical clusters from distance matrices
+        * computing distance matrices from observation vectors
+        * computing statistics on clusters
+        * cutting linkages to generate flat clusters
+        * and visualizing clusters with dendrograms.
+        
+        The interface is very similar to MATLAB's Statistics Toolbox API to make code
+        easier to port from MATLAB to Python/Numpy. The core implementation of this
+        library is in C for efficiency.
+        
+Keywords: dendrogram,linkage,cluster,agglomorative,hierarchical,hierarchy,ward,distance
+Platform: UNKNOWN
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Intended Audience :: Science/Research
+Classifier: Development Status :: 4 - Beta
