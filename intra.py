@@ -1,5 +1,6 @@
 # Intra.
 
+import math as m
 import const as c
 import numpy as n
 from stemming.porter2 import stem
@@ -21,6 +22,30 @@ def clean(word):
     for p in c.punct: word = word.replace(p, '')
     for b in c.breaks: word = word.replace(b, ' ')
     return word.lower()
+
+def halflife_to_lifetime(halflife):
+    '''Convert a halflife to a mean decay lifetime.
+    :param int halflife: Halflife.
+    :return int: Mean decay lifetime.'''
+    return halflife / m.log(2)
+
+def decay(start, mean, threshold):
+    '''Generate exponential decay values.
+    :param float start: The starting value.
+    :param float mean: The decay mean lifetime.
+    :param float threshold: The decimal part of the
+    start value after which to stop the computation.
+    :return list values: The list of values.'''
+    values = []
+    end = start * threshold
+    val = start
+    itr = 0
+    while val > end:
+        val = start * m.exp(-itr / mean)
+        values.append(val)
+        itr += 1
+    return values
+
 
 def entoken(stream):
     '''Yield a stream of tokens.
