@@ -27,7 +27,7 @@ def decay(start, mean, threshold):
     :param float start: The starting value.
     :param float mean: The decay mean lifetime.
     :param float threshold: The decimal part of the
-    start value after which to stop the computation.
+    \ start value after which to stop the computation.
     :return list values: The list of values.'''
     values = []
     end = start * threshold
@@ -102,79 +102,12 @@ class Text(object):
             radii.append(j-i)
         return radii
 
-    def mad(self, word):
-        '''Compute median average deviation for word radii.
-        :param str word: The word.
-        :return int: Median average deviation.'''
-        radii = self.radii(word)
-        median = n.median(radii)
-        distances = []
-        for r in radii:
-            distances.append(abs(r-median))
-        return n.median(distances)
-
-    def search(self, word, radius):
-        '''Direct word search.
-        :param str word: The word.
-        :param int radius: The highlighting radius.
-        :return list hits: A list of snippets.'''
-        word = stem(word)
-        hits = []
-        for w in self.words:
-            if word == w[0]:
-                hits.append(self.snippet(w[1], radius))
-        return hits
-
-    def dbscan(self, word, radius):
-        '''DBSCAN implementation.
-        http://en.wikipedia.org/wiki/DBSCAN
-        :param str word: The word.
-        :param int radius: The highlighting radius.
-        :param int eps: Clustering word-radius distance.
-        :param int min_pts: Minimum points for cluster.
-        :return list results: [(cluster of snippets,
-        (boundary % 1, boundary %2)]'''
-        # Get all results, forming a list of 3-tuples
-        # with form (word, char offset, token offset).
-        word = stem(word)
-        offsets = self.offsets(word)
-        eps = len(self.words)/(len(offsets)+1)
-        hits = []
-        for i, w in enumerate(self.words):
-            if word == w[0]:
-                hits.append((w[0], w[1], i))
-        # Cluster the results.
-        cluster = []
-        clusters = []
-        cluster.append(hits[0])
-        for h in hits[1:]:
-            if len(cluster) == 0:
-                cluster.append(h)
-            elif h[2] - cluster[-1][2] < eps:
-                cluster.append(h)
-            else:
-                clusters.append(cluster)
-                cluster = []
-        # Get snippets and bounds for the clusters.
-        results = []
-        text_len = float(len(self.text))
-        for cluster in clusters:
-            snippets = []
-            # Form snippets.
-            for c in cluster:
-                snippet = self.snippet(c[1], radius)
-                snippets.append(snippet)
-            # Get bounds.
-            b1 = cluster[0][1]/text_len
-            b2 = cluster[-1][1]/text_len
-            results.append((snippets, (b1,b2)))
-        return results
-
     def decay(self, word, halflife, threshold, snippet_radius):
         '''Single word exponential decay search.
         :param str word: The word.
         :param float halflife: The decay halflife as word radius.
-        :param float halflife: The decay halflife as word radius.
+        :param float threshold: The decimal part of the decay
+        \ start value after which to stop the computation.
         :param int snippet_radius: The highlighting radius.
         :return list results: [(snippet, offset %)]'''
         # Compute out the decay series.
@@ -193,12 +126,12 @@ class Text(object):
                 sums[pos] += val
         # Compute negative offsets.
         for o in offsets:
-            revseries = series
+            rseries = series
             start = o-radius+1
             if start < 0:
-                revseries = series[start:]
+                rseries = series[start:]
                 start = 1
-            for pos,val in zip(range(start,o), reversed(revseries)):
+            for pos,val in zip(range(start,o), reversed(rseries)):
                 sums[pos] += val
         # Find local maximums.
         results = []

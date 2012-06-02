@@ -1,5 +1,5 @@
 import intra as i
-f = open('./texts/wp.txt')
+f = open('./texts/cp.txt')
 
 string = ''
 for line in f:
