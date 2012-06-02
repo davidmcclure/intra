@@ -63,7 +63,7 @@ def clean(word):
     return word.lower()
 
 
-class Text(object):
+class Text:
 
     def __init__(self, text):
         '''Tokenize text.
