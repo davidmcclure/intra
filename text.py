@@ -1,10 +1,11 @@
-# Intra.
+# Text.
 
 import math as m
 import const as c
 import numpy as n
 from stemming.porter2 import stem
 from operator import itemgetter
+import re
 
 
 def group(iterator, count):
@@ -49,7 +50,7 @@ def entoken(stream):
         if char != ' ':
             word += char
             if offset is None: offset = i
-        elif char == ' ' or i == len(stream):
+        elif word and char == ' ':
             yield (stem(clean(word)), offset)
             offset = None
             word = ''
@@ -58,7 +59,6 @@ def clean(word):
     '''Normalize a word.
     :param str word: The word text.
     :return str: The cleaned word.'''
-    for p in c.punct: word = word.replace(p, '')
     for b in c.breaks: word = word.replace(b, '')
     return word.lower()
 
@@ -91,16 +91,6 @@ class Text:
             if word == w[0]:
                 offsets.append(i)
         return offsets
-
-    def radii(self, word):
-        '''Get list of radii between all instances of token.
-        :param str word: The word.
-        :return list radii: [radius2, radius2, ...]'''
-        radii = []
-        offsets = self.offsets(word)
-        for i,j in group(offsets, 2):
-            radii.append(j-i)
-        return radii
 
     def decay(self, word, halflife, threshold, snippet_radius):
         '''Single word exponential decay search.

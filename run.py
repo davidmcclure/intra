@@ -1,5 +1,5 @@
 import text as t
-f = open('./texts/cp.txt')
+f = open('./texts/wp.txt')
 
 string = ''
 for line in f:
