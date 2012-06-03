@@ -1,4 +1,4 @@
-# Text.
+# Intra.
 
 import math as m
 import numpy as n
@@ -111,7 +111,7 @@ class Text:
 class Query:
 
     def __init__(self):
-        '''Shell out signals list.
+        '''Shell signals list.
         :return None'''
         self.signals = []
 
@@ -119,7 +119,7 @@ class Query:
 class Signal:
 
     def __init__(self):
-        '''Shell out terms lists.
+        '''Shell terms lists.
         :return None'''
         self.positive = []
         self.negative = []
