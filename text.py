@@ -59,7 +59,7 @@ def clean(word):
     '''Normalize a word.
     :param str word: The word text.
     :return str: The cleaned word.'''
-    for b in c.breaks: word = word.replace(b, '')
+    for p in c.punct: word = word.replace(b, '')
     return word.lower()
 
 
