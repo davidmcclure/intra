@@ -92,45 +92,45 @@ class Text:
                 offsets.append(i)
         return offsets
 
-    def decay(self, word, halflife, threshold, snippet_radius):
-        '''Single word exponential decay search.
-        :param str word: The word.
-        :param float halflife: The decay halflife as word radius.
-        :param float threshold: The decimal part of the decay
-        \ start value after which to stop the computation.
-        :param int snippet_radius: The highlighting radius.
-        :return list results: [(snippet, offset %)]'''
-        # Compute out the decay series.
-        lifetime = halflife_to_lifetime(halflife)
-        series = decay(1., lifetime, threshold)
-        radius = len(series)
-        # Get occurrences, shell out the sum matrix.
-        offsets = self.offsets(word)
-        wordcount = len(self.words)
-        sums = n.zeros(wordcount)
-        # Compute forward offsets.
-        for o in offsets:
-            end = o+radius
-            if end > wordcount: end = wordcount
-            for pos,val in zip(range(o,end), series):
-                sums[pos] += val
-        # Compute negative offsets.
-        for o in offsets:
-            rseries = series
-            start = o-radius+1
-            if start < 0:
-                rseries = series[start:]
-                start = 1
-            for pos,val in zip(range(start,o), reversed(rseries)):
-                sums[pos] += val
-        # Find local maximums.
-        results = []
-        text_len = float(len(self.text))
-        i = 1
-        for pos,word in zip(sums[1:-1], self.words[1:-1]):
-            if pos > sums[i-1] and pos > sums[i+1]:
-                snippet = self.snippet(word[1], snippet_radius)
-                ratio = word[1]/text_len
-                results.append((snippet, pos, ratio))
-            i += 1
-        return sorted(results, key=itemgetter(1), reverse=True)
+
+class Query:
+
+    def __init__(self):
+        '''Shell out signals list.
+        :return None'''
+        self.signals = []
+
+
+class Signal:
+
+    def __init__(self):
+        '''Shell out terms lists.
+        :return None'''
+        self.positive = []
+        self.negative = []
+
+
+class Term:
+
+    @abstractmethod
+    def match(self, sample):
+        '''Evaluate a text sample against the term.
+        :param list sample: A list of tokens.
+        :return bool: True if the term matches.'''
+        raise NotImplementedError
+
+
+class StaticTerm(Term):
+    pass
+
+
+class LikeTerm(Term):
+    pass
+
+
+class CompoundTerm(Term):
+    pass
+
+
+class Executor:
+    pass
