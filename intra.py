@@ -1,12 +1,27 @@
 # Text.
 
 import math as m
-import const as c
 import numpy as n
 from stemming.porter2 import stem
 from operator import itemgetter
 import re
 
+
+scrub = [
+    '\n',
+    '\r',
+    '(',
+    ')',
+    ':',
+    ';',
+    ',',
+    '!',
+    '.',
+    '?',
+    '/',
+    '"',
+    '*',
+    "'"]
 
 def group(iterator, count):
     '''Yield n-tuples on an iterator.
@@ -59,7 +74,7 @@ def clean(word):
     '''Normalize a word.
     :param str word: The word text.
     :return str: The cleaned word.'''
-    for p in c.punct: word = word.replace(b, '')
+    for s in scrub: word = word.replace(s, '')
     return word.lower()
 
 
@@ -112,25 +127,24 @@ class Signal:
 
 class Term:
 
-    @abstractmethod
+    # abstractmethod
     def match(self, sample):
         '''Evaluate a text sample against the term.
         :param list sample: A list of tokens.
         :return bool: True if the term matches.'''
-        raise NotImplementedError
+        pass
 
 
 class StaticTerm(Term):
-    pass
 
+    def __init__(self, term):
+        '''Set term.
+        :param str term: The term.
+        :return None'''
+        self.term = stem(term)
 
-class LikeTerm(Term):
-    pass
-
-
-class CompoundTerm(Term):
-    pass
-
-
-class Executor:
-    pass
+    def match(self, sample):
+        '''Evaluate for a single term match.
+        :param list sample: List with 1 token ~ [token].
+        :return bool: True if the term matches.'''
+        return sample[0] == self.term
