@@ -148,7 +148,6 @@ class Signal:
                     self.signal[p] += v
 
 
-
 class Term:
 
     def __init__(self, term, sign, halflife):
