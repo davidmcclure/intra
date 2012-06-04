@@ -1,7 +1,7 @@
 # Intra.
 
 import math as m
-import numpy as n
+import numpy as np
 from stemming.porter2 import stem
 from operator import itemgetter
 import re
@@ -96,36 +96,64 @@ class Text:
         :return str: The snippet.'''
         return self.text[offset-radius:offset+radius]
 
-    def offsets(self, word):
-        '''Get list of stemmed token offsets.
-        :param str word: The word.
-        :return list offsets: [offset1, offset2, ...]'''
-        word = stem(word)
-        offsets = []
-        for i,w in enumerate(self.words):
-            if word == w[0]:
-                offsets.append(i)
-        return offsets
-
-
-class Query:
-
-    def __init__(self):
-        '''Shell signals list.
-        :return None'''
-        self.signals = []
-
 
 class Signal:
 
-    def __init__(self):
-        '''Shell terms lists.
+    def __init__(self, text):
+        '''Set text, shell terms lists and signal.
         :return None'''
+        self.text = text
+        self.signal = np.zeros(len(text.words))
         self.positive = []
         self.negative = []
 
+    @property
+    def terms(self):
+        '''Return all terms.
+        :return list: Positive and negative terms.'''
+        return self.positive + self.negative
+
+    def generate(self):
+        '''Generate signal values.
+        :return None'''
+        self.scale()
+        for term in self.positive:
+            pass
+        for term in self.negative:
+            pass
+
+    def scale(self):
+        '''Scale terms based on frequency.
+        :return None'''
+        # Build counts and max.
+        max = 0
+        for term in self.terms:
+            for token in term.walk(self.text.words):
+                if term.match(token):
+                     term.count += 1
+            if term.count > max:
+                max = term.count
+        # Scale the term values.
+        for term in self.terms:
+            term.value = float(max)/term.count
+
 
 class Term:
+
+    def __init__(self, term):
+        '''Set term, shell value and count.
+        :param str term: The term.
+        :return None'''
+        self.count = 0
+        self.value = None
+        self.parse(term)
+
+    # abstractmethod
+    def parse(self, term):
+        '''Prepare the term input for matching.
+        :param str term: The term.
+        :return None'''
+        pass
 
     # abstractmethod
     def match(self, sample):
@@ -134,10 +162,25 @@ class Term:
         :return bool: True if the term matches.'''
         pass
 
+    # abstractmethod
+    def walk(self, text):
+        '''Yield text samples for matching.
+        :param Text text: A text.
+        :yield list: A list of tokens.'''
+        pass
+
+    # abstractmethod
+    def offsets(self, text):
+        '''Return list of offset start and end
+        \ positions of all term matches in the text.
+        :param Text text: A text.
+        :return list: [[pos1,pos2], [pos1,pos2], ..].'''
+        pass
+
 
 class StaticTerm(Term):
 
-    def __init__(self, term):
+    def parse(self, term):
         '''Set term.
         :param str term: The term.
         :return None'''
@@ -148,3 +191,10 @@ class StaticTerm(Term):
         :param list sample: List with 1 token ~ [token].
         :return bool: True if the term matches.'''
         return sample[0] == self.term
+
+    def walk(self, text):
+        '''Step through each word in the text.
+        :param Text text: A text.
+        :yield list: [token].'''
+        for word in text:
+            yield word
