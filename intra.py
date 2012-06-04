@@ -104,23 +104,12 @@ class Signal:
         :return None'''
         self.text = text
         self.signal = np.zeros(len(text.words))
-        self.positive = []
-        self.negative = []
-
-    @property
-    def terms(self):
-        '''Return all terms.
-        :return list: Positive and negative terms.'''
-        return self.positive + self.negative
+        self.terms = []
 
     def generate(self):
         '''Generate signal values.
         :return None'''
         self.scale()
-        for term in self.positive:
-            pass
-        for term in self.negative:
-            pass
 
     def scale(self):
         '''Scale terms based on frequency.
@@ -128,24 +117,24 @@ class Signal:
         # Build counts and max.
         max = 0
         for term in self.terms:
-            for token in term.walk(self.text.words):
-                if term.match(token):
-                     term.count += 1
-            if term.count > max:
-                max = term.count
+            term.count(self.text)
+            if term.term_count > max:
+                max = term.term_count
         # Scale the term values.
         for term in self.terms:
-            term.value = float(max)/term.count
+            val = float(max)/term.term_count
+            term.value = term.value * val
 
 
 class Term:
 
-    def __init__(self, term):
+    def __init__(self, term, sign):
         '''Set term, shell value and count.
         :param str term: The term.
+        :param bool sign: True/positive, False/negative.
         :return None'''
-        self.count = 0
-        self.value = None
+        self.term_count = 0
+        self.value = 1 if sign else -1
         self.parse(term)
 
     # abstractmethod
@@ -177,6 +166,14 @@ class Term:
         :return list: [[pos1,pos2], [pos1,pos2], ..].'''
         pass
 
+    def count(self, text):
+        '''Build term count.
+        :param Text text: A text.
+        :return None'''
+        for token in self.walk(text.words):
+            if self.match(token):
+                self.term_count += 1
+
 
 class StaticTerm(Term):
 
@@ -190,11 +187,21 @@ class StaticTerm(Term):
         '''Evaluate for a single term match.
         :param list sample: List with 1 token ~ [token].
         :return bool: True if the term matches.'''
-        return sample[0] == self.term
+        return sample[0][0] == self.term
 
     def walk(self, text):
         '''Step through each word in the text.
         :param Text text: A text.
         :yield list: [token].'''
         for word in text:
-            yield word
+            yield [word]
+
+    def offsets(self, text):
+        '''Step through each word in the text.
+        :param Text text: A text.
+        :return list: [[pos1,pos2], [pos1,pos2], ..].'''
+        offsets = []
+        for i,token in enumerate(self.walk(text.words)):
+            if self.match(token):
+                offsets.append([i,i])
+        return offsets
