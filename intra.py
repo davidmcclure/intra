@@ -32,7 +32,7 @@ def group(iterator, count):
     while True:
         yield tuple([itr.next() for i in range(count)])
 
-def halflife_to_lifetime(halflife):
+def hl_to_mean(halflife):
     '''Convert a halflife to a mean decay lifetime.
     :param int halflife: Halflife.
     :return float: Mean decay lifetime.'''
@@ -49,7 +49,7 @@ def decay(start, mean, threshold):
     end = start * threshold
     val = start
     itr = 0
-    while val > end:
+    while abs(val) > abs(end):
         val = start * m.exp(-itr / mean)
         values.append(val)
         itr += 1
@@ -101,15 +101,11 @@ class Signal:
 
     def __init__(self, text):
         '''Set text, shell terms lists and signal.
+        :param Text text: A text.
         :return None'''
         self.text = text
         self.signal = np.zeros(len(text.words))
         self.terms = []
-
-    def generate(self):
-        '''Generate signal values.
-        :return None'''
-        self.scale()
 
     def scale(self):
         '''Scale terms based on frequency.
@@ -125,16 +121,46 @@ class Signal:
             val = float(max)/term.term_count
             term.value = term.value * val
 
+    def generate(self):
+        '''Generate signal values.
+        :return None'''
+        self.scale()
+        for term in self.terms:
+            offsets = term.offsets(self.text)
+            series = decay(term.value, term.mean, 0.1)
+            length = len(self.signal)
+            radius = len(series)
+            # Right decay.
+            for o1,o2 in offsets:
+                b2 = o2+radius
+                if b2 > length: b2 = length
+                for p,v in zip(range(o2,b2), series):
+                    self.signal[p] += v
+            # Left decay.
+            for o1,o2 in offsets:
+                rseries = series
+                b1 = o1-radius+1
+                if b1 < 0:
+                    rseries = series[:b1]
+                    b1 = 1
+                rseries = reversed(rseries)
+                for p,v in zip(range(b1,o1), rseries):
+                    self.signal[p] += v
+
+
 
 class Term:
 
-    def __init__(self, term, sign):
+    def __init__(self, term, sign, halflife):
         '''Set term, shell value and count.
         :param str term: The term.
         :param bool sign: True/positive, False/negative.
+        :param int halflife: Halflife as a word radius.
         :return None'''
         self.term_count = 0
         self.value = 1 if sign else -1
+        self.halflife = halflife
+        self.mean = hl_to_mean(halflife)
         self.parse(term)
 
     # abstractmethod

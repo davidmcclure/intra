@@ -1,5 +1,5 @@
 from  intra import *
-f = open('./texts/cp.txt')
+f = open('./texts/test.txt')
 
 string = ''
 for line in f:
@@ -8,9 +8,9 @@ for line in f:
 t = Text(string)
 s = Signal(t)
 
-axe = StaticTerm('axe', True)
-god = StaticTerm('god', False)
-s.terms.append(axe)
-s.terms.append(god)
+plus1 = StaticTerm('word', True, 2)
+plus2 = StaticTerm('david', False, 2)
+s.terms.append(plus1)
+s.terms.append(plus2)
 
-s.scale()
+s.generate()
