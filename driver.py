@@ -1,16 +1,18 @@
 from  intra import *
-f = open('./texts/test.txt')
+f = open('./texts/wp.txt')
 
 string = ''
 for line in f:
     string += line
 
 t = Text(string)
+q = Query(t)
 s = Signal(t)
+q.signals.append(s)
 
-plus1 = StaticTerm('word', True, 2)
-plus2 = StaticTerm('david', False, 2)
-s.terms.append(plus1)
-s.terms.append(plus2)
+term1 = StaticTerm('andrew', True, 500)
+term2 = StaticTerm('sky', True, 500)
+s.terms.append(term1)
+s.terms.append(term2)
 
-s.generate()
+results = q.execute(10, 2000)

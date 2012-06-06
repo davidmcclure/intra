@@ -32,27 +32,22 @@ def group(iterator, count):
     while True:
         yield tuple([itr.next() for i in range(count)])
 
-def hl_to_mean(halflife):
-    '''Convert a halflife to a mean decay lifetime.
-    :param int halflife: Halflife.
-    :return float: Mean decay lifetime.'''
-    return float(halflife) / m.log(2)
-
-def decay(start, mean, threshold):
+def decay(height, fwhm, threshold):
     '''Generate exponential decay values.
-    :param float start: The starting value.
-    :param float mean: The decay mean lifetime.
+    :param float height: The starting value.
+    :param float fwhm: Full width at half maximum.
     :param float threshold: The decimal part of the
-    \ start value after which to stop the computation.
+    \ start value after which to half the series.
     :return list values: The list of values.'''
+    c = fwhm / 2*m.sqrt(2*m.log(2))
     values = []
-    end = start * threshold
-    val = start
-    itr = 0
+    end = height * threshold
+    val = height
+    i = 0
     while abs(val) > abs(end):
-        val = start * m.exp(-itr / mean)
+        val = height * m.exp(-(i**2)/(2*c**2))
         values.append(val)
-        itr += 1
+        i += 1
     return values
 
 def entoken(stream):
@@ -77,6 +72,18 @@ def clean(word):
     for s in scrub: word = word.replace(s, '')
     return word.lower()
 
+def maxes(signal):
+    '''Find indices of local maxima on a signal.
+    :param list signal: The signal.
+    :yield list maxes: The maxima positions.'''
+    maxes = []
+    i = 1
+    for s in signal[1:-1]:
+        if s > signal[i-1] and s > signal[i+1]:
+            maxes.append(i)
+        i += 1
+    return maxes
+
 
 class Text:
 
@@ -95,6 +102,34 @@ class Text:
         :param int radius: The character radius.
         :return str: The snippet.'''
         return self.text[offset-radius:offset+radius]
+
+class Query:
+
+    def __init__(self, text):
+        '''Set text, shell signals list.
+        :param Text text: A text.
+        :return None'''
+        self.text = text
+        self.signals = []
+
+    def execute(self, count, radius):
+        '''Run query.
+        :param int count: The number of results.
+        :param int radius: The snippet character radius.
+        :return list results: The result snippets.'''
+        # Find local maxima.
+        maxes = []
+        for s in self.signals:
+            maxes += s.maxima()
+        maxes = sorted(maxes,key=itemgetter(1),reverse=True)
+        # Build results.
+        results = []
+        for m in maxes[:count]:
+            offset = self.text.words[m[0]][1]
+            snippet = self.text.snippet(offset, radius)
+            results.append(snippet)
+        return results
+
 
 
 class Signal:
@@ -127,7 +162,7 @@ class Signal:
         self.scale()
         for term in self.terms:
             offsets = term.offsets(self.text)
-            series = decay(term.value, term.mean, 0.1)
+            series = decay(term.value, term.fwhm, 0.1)
             length = len(self.signal)
             radius = len(series)
             # Right decay.
@@ -147,19 +182,30 @@ class Signal:
                 for p,v in zip(range(b1,o1), rseries):
                     self.signal[p] += v
 
+    def maxima(self):
+        '''Find local maxima.
+        :return list maxima: The maxima.'''
+        self.generate()
+        maxima = []
+        i = 1
+        for s in self.signal[1:-1]:
+            if s > self.signal[i-1] and s > self.signal[i+1]:
+                maxima.append((i, self.signal[i]))
+            i += 1
+        return maxima
+
 
 class Term:
 
-    def __init__(self, term, sign, halflife):
-        '''Set term, shell value and count.
+    def __init__(self, term, sign, fwhm):
+        '''Set parameters, parse term.
         :param str term: The term.
         :param bool sign: True/positive, False/negative.
-        :param int halflife: Halflife as a word radius.
+        :param int fwhm: Full width at half maximum.
         :return None'''
         self.term_count = 0
         self.value = 1 if sign else -1
-        self.halflife = halflife
-        self.mean = hl_to_mean(halflife)
+        self.fwhm = float(fwhm)
         self.parse(term)
 
     # abstractmethod
@@ -222,7 +268,8 @@ class StaticTerm(Term):
             yield [word]
 
     def offsets(self, text):
-        '''Step through each word in the text.
+        '''Return list of offset start and end
+        \ positions of all term matches in the text.
         :param Text text: A text.
         :return list: [[pos1,pos2], [pos1,pos2], ..].'''
         offsets = []
