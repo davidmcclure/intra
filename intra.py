@@ -131,7 +131,6 @@ class Query:
         return results
 
 
-
 class Signal:
 
     def __init__(self, text):
