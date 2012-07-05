@@ -1,5 +1,5 @@
 from  intra import *
-f = open('./texts/wp.txt')
+f = open('./texts/test.txt')
 
 string = ''
 for line in f:
@@ -7,12 +7,10 @@ for line in f:
 
 t = Text(string)
 q = Query(t)
-s = Signal(t)
+s = Signal()
 q.signals.append(s)
 
-term1 = StaticTerm('andrew', True, 500)
-term2 = StaticTerm('sky', True, 500)
+term1 = OrTerm(['david', 'kara'], True, 3)
 s.terms.append(term1)
-s.terms.append(term2)
 
-results = q.execute(10, 2000)
+results = q.execute()

@@ -88,13 +88,32 @@ def maxes(signal):
 class Text:
 
     def __init__(self, text):
-        '''Tokenize text.
+        '''Set text, tokenize.
         :param str text: The text stream.
         :return None'''
         self.text = text
+        self.tokenize()
+
+    def tokenize(self):
+        '''Tokenize text.
+        :param str text: The text stream.
+        :return None'''
         self.words = []
-        for word in entoken(text):
-            self.words.append(word)
+        offset = None
+        length = len(self.text)
+        word = ''
+        # Replace all scrub chars with whitespace.
+        for s in scrub:
+            self.text = self.text.replace(s, ' ')
+        # Walk characters.
+        for i, char in enumerate(self.text):
+            if char != ' ':
+                word += char
+                if offset is None: offset = i
+            elif word and (char == ' ' or i+1==length):
+                self.words.append((stem(clean(word)), offset))
+                offset = None
+                word = ''
 
     def snippet(self, offset, radius):
         '''Get a text snippet.
@@ -112,7 +131,7 @@ class Query:
         self.text = text
         self.signals = []
 
-    def execute(self, count, radius):
+    def execute(self):
         '''Run query.
         :param int count: The number of results.
         :param int radius: The snippet character radius.
@@ -120,34 +139,24 @@ class Query:
         # Find local maxima.
         maxes = []
         for s in self.signals:
-            maxes += s.maxima()
-        maxes = sorted(maxes,key=itemgetter(1),reverse=True)
-        # Build results.
-        results = []
-        for m in maxes[:count]:
-            offset = self.text.words[m[0]][1]
-            snippet = self.text.snippet(offset, radius)
-            results.append(snippet)
-        return results
+            s.generate(self.text)
 
 
 class Signal:
 
-    def __init__(self, text):
+    def __init__(self):
         '''Set text, shell terms lists and signal.
-        :param Text text: A text.
         :return None'''
-        self.text = text
-        self.signal = np.zeros(len(text.words))
         self.terms = []
 
-    def scale(self):
+    def scale(self, text):
         '''Scale terms based on frequency.
+        :param Text text: A text.
         :return None'''
         # Build counts and max.
         max = 0
         for term in self.terms:
-            term.count(self.text)
+            term.count(text)
             if term.term_count > max:
                 max = term.term_count
         # Scale the term values.
@@ -155,12 +164,14 @@ class Signal:
             val = float(max)/term.term_count
             term.value = term.value * val
 
-    def generate(self):
+    def generate(self, text):
         '''Generate signal values.
+        :param Text text: A text.
         :return None'''
-        self.scale()
+        self.scale(text)
+        self.signal = np.zeros(len(text.words))
         for term in self.terms:
-            offsets = term.offsets(self.text)
+            offsets = term.offsets(text)
             series = decay(term.value, term.fwhm, 0.1)
             length = len(self.signal)
             radius = len(series)
@@ -180,18 +191,6 @@ class Signal:
                 rseries = reversed(rseries)
                 for p,v in zip(range(b1,o1), rseries):
                     self.signal[p] += v
-
-    def maxima(self):
-        '''Find local maxima.
-        :return list maxima: The maxima.'''
-        self.generate()
-        maxima = []
-        i = 1
-        for s in self.signal[1:-1]:
-            if s > self.signal[i-1] and s > self.signal[i+1]:
-                maxima.append((i, self.signal[i]))
-            i += 1
-        return maxima
 
 
 class Term:
@@ -255,9 +254,44 @@ class StaticTerm(Term):
 
     def match(self, sample):
         '''Evaluate for a single term match.
-        :param list sample: List with 1 token ~ [token].
+        :param list sample: List with 1 token ~ [(token, offset)].
         :return bool: True if the term matches.'''
         return sample[0][0] == self.term
+
+    def walk(self, text):
+        '''Step through each word in the text.
+        :param Text text: A text.
+        :yield list: [token].'''
+        for word in text:
+            yield [word]
+
+    def offsets(self, text):
+        '''Return list of offset start and end
+        \ positions of all term matches in the text.
+        :param Text text: A text.
+        :return list: [[pos1,pos2], [pos1,pos2], ..].'''
+        offsets = []
+        for i,token in enumerate(self.walk(text.words)):
+            if self.match(token):
+                offsets.append([i,i])
+        return offsets
+
+
+class OrTerm(Term):
+
+    def parse(self, terms):
+        '''Set terms.
+        :param list terms: The list of terms.
+        :return None'''
+        self.terms = []
+        for term in terms:
+            self.terms.append(stem(term))
+
+    def match(self, sample):
+        '''Evaluate for a single term match.
+        :param list sample: List with 1 token ~ [(token, offset)].
+        :return bool: True if the term matches.'''
+        return sample[0][0] in self.terms
 
     def walk(self, text):
         '''Step through each word in the text.
