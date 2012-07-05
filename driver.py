@@ -1,16 +1,22 @@
 from  intra import *
-f = open('./texts/test.txt')
+import matplotlib.pyplot as plt
+import requests as r
 
-string = ''
-for line in f:
-    string += line
+def load(url):
+    global text
+    res = r.get(url)
+    text = Text(res.text)
+    print res.text[:1000]
 
-t = Text(string)
-q = Query(t)
-s = Signal()
-q.signals.append(s)
-
-term1 = OrTerm(['david', 'kara'], True, 3)
-s.terms.append(term1)
-
-results = q.execute()
+def q(query, width=1000):
+    global text
+    terms = query.split(' ')
+    q = Query(text)
+    s = Signal()
+    q.signals.append(s)
+    for term in terms:
+        t = StaticTerm(term, True, width)
+        s.terms.append(t)
+    q.execute()
+    plt.clf()
+    plt.plot(q.signals[0].signal)

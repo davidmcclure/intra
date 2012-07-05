@@ -3,6 +3,7 @@
 import math as m
 import numpy as np
 from stemming.porter2 import stem
+from nltk.corpus import wordnet as wn
 from operator import itemgetter
 import re
 
@@ -75,7 +76,7 @@ def clean(word):
 def maxes(signal):
     '''Find indices of local maxima on a signal.
     :param list signal: The signal.
-    :yield list maxes: The maxima positions.'''
+    :return list maxes: The maxima positions.'''
     maxes = []
     i = 1
     for s in signal[1:-1]:
@@ -83,6 +84,16 @@ def maxes(signal):
             maxes.append(i)
         i += 1
     return maxes
+
+def synonyms(word):
+    '''Get single-word synonyms for a word.
+    :param str word: The word.
+    :return list synonyms: The synonyms.'''
+    synonyms = set()
+    syns = [l.name for s in wn.synsets(word) for l in s.lemmas]
+    for s in syns:
+        if '_' not in s: synonyms.add(s.lower())
+    return synonyms
 
 
 class Text:
@@ -121,6 +132,13 @@ class Text:
         :param int radius: The character radius.
         :return str: The snippet.'''
         return self.text[offset-radius:offset+radius]
+
+    def wordsnippet(self, offset, radius):
+        '''Get a text snippet based on word offset.
+        :param int offset: The center word offset.
+        :param int radius: The character radius.
+        :return str: The snippet.'''
+        return self.snippet(self.words[offset][1], radius)
 
 class Query:
 
@@ -244,7 +262,28 @@ class Term:
                 self.term_count += 1
 
 
-class StaticTerm(Term):
+class SingleTerm(Term):
+
+    def offsets(self, text):
+        '''Return list of offset start and end
+        \ positions of all term matches in the text.
+        :param Text text: A text.
+        :return list: [[pos1,pos2], [pos1,pos2], ..].'''
+        offsets = []
+        for i,token in enumerate(self.walk(text.words)):
+            if self.match(token):
+                offsets.append([i,i])
+        return offsets
+
+    def walk(self, text):
+        '''Step through each word in the text.
+        :param Text text: A text.
+        :yield list: [token].'''
+        for word in text:
+            yield [word]
+
+
+class StaticTerm(SingleTerm):
 
     def parse(self, term):
         '''Set term.
@@ -258,26 +297,26 @@ class StaticTerm(Term):
         :return bool: True if the term matches.'''
         return sample[0][0] == self.term
 
-    def walk(self, text):
-        '''Step through each word in the text.
-        :param Text text: A text.
-        :yield list: [token].'''
-        for word in text:
-            yield [word]
 
-    def offsets(self, text):
-        '''Return list of offset start and end
-        \ positions of all term matches in the text.
-        :param Text text: A text.
-        :return list: [[pos1,pos2], [pos1,pos2], ..].'''
-        offsets = []
-        for i,token in enumerate(self.walk(text.words)):
-            if self.match(token):
-                offsets.append([i,i])
-        return offsets
+class LikeTerm(SingleTerm):
+
+    def parse(self, term):
+        '''Set term.
+        :param list terms: the term.
+        :return None'''
+        syns = synonyms(term)
+        self.terms = []
+        for s in syns:
+            self.terms.append(stem(s))
+
+    def match(self, sample):
+        '''Evaluate for a single term match.
+        :param list sample: List with 1 token ~ [(token, offset)].
+        :return bool: True if the term matches.'''
+        return sample[0][0] in self.terms
 
 
-class OrTerm(Term):
+class OrTerm(SingleTerm):
 
     def parse(self, terms):
         '''Set terms.
@@ -292,21 +331,3 @@ class OrTerm(Term):
         :param list sample: List with 1 token ~ [(token, offset)].
         :return bool: True if the term matches.'''
         return sample[0][0] in self.terms
-
-    def walk(self, text):
-        '''Step through each word in the text.
-        :param Text text: A text.
-        :yield list: [token].'''
-        for word in text:
-            yield [word]
-
-    def offsets(self, text):
-        '''Return list of offset start and end
-        \ positions of all term matches in the text.
-        :param Text text: A text.
-        :return list: [[pos1,pos2], [pos1,pos2], ..].'''
-        offsets = []
-        for i,token in enumerate(self.walk(text.words)):
-            if self.match(token):
-                offsets.append([i,i])
-        return offsets
