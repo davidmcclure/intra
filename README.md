@@ -12,7 +12,9 @@ Intra models _relevancy_ as a gaussian curve that "emits" in both directions awa
 
 For example, using this text:
 
+```text
 word word match1 match1 word word word word match1 match2 word word
+```
 
 The signal curve for the query qand('match1') with a decay halflife of 2 words looks like this:
 
@@ -28,7 +30,9 @@ As an early experiment, Intra can also do synonym queries, which are based on Wo
 
 So, using this text:
 
+```text
 word word gladden joy word word word word rejoice word word word
+```
 
 qlike('joy', 2) gives:
 
@@ -51,10 +55,9 @@ from driver import *
 Then, register a text. Webpages can be loaded remotely, or text can be pasted directly into the terminal.
 
 ```python
+// either:
 paste('Some text.')
-```
-Or:
-```python
+// or:
 load('http://www.gutenberg.lib.md.us/1/3/2/1322/1322.txt')
 ```
 
