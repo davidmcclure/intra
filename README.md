@@ -4,7 +4,7 @@ Intra is a prototype application that experiments with a new approach to searchi
 
 This approach has two advantages. First, it makes it possible for the user to immediately intuit the structure of the query result. Instead of having to make substantive decisions for the user about what portions of the text get returned and in what order, the signal data can be presented unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
 
-Second, Intra's approach to modeling relevancy makes it simple to go beyond single-term searches and model compound and boolean queries (AND, OR, NOT, LIKE) just by arithmetically summing an arbitrary number of signals.
+Second, Intra's approach to modeling relevancy makes it simple to execute compound boolean queries (AND, OR, NOT, LIKE) just by arithmetically summing an arbitrary number of signals.
 
 ## The query model
 
