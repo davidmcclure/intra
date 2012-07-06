@@ -1,6 +1,6 @@
 # Intra
 
-Intra is a prototype application that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of document-based approaches by chopping long texts into short segments and then returning subsets of the segments as search results, intra models relevancy by converting search queries into "signals" - each word in the text is an integer on the X axis, and intra assigns a y-axis value for each word position.
+Intra is a prototype application that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of document-based approaches by chopping long texts into short segments and then returning subsets of the segments, Intra models relevancy by converting search queries into "signals" - each word in the text is an integer on the X axis, and Intra assigns a y-axis value for each word position.
 
 This approach has two advantages. First, it makes it possible for the user to immediately intuit the structure of the query result across the linear duration of the text - _positional_ information about the relevancy of the query is completely baked into the presentation of the results. Instead of just getting a vertical stack of algorithmically ranked snippets of some arbitrary length, the signal data is immediately intuitive as raw, transparent, and complete data. Instead of having to make substantive decisisions for the user about what gets returned and in what order, the signal data can be presented unmodified and unadorned, allowing the user to bore in on the actual source text by interacting with the signal graph.
 
@@ -32,7 +32,7 @@ Logical "OR" queries, meanwhile, do not scale the center values and just test ea
 
 ![qor1](http://dclure.org/wp-content/uploads/2012/07/qor-1.png)
 
-As an early experiment, Intra can also do synonym queries, which are based on Wordnet synsets accessed by way of nltk. Synonyms are generated and AND-ed together. For example, the query **qlike('joy', 2)** resolves to qand('rejoice, joyousness, joyfulness, joy, deilght, gladden, pleasure').
+As an early experiment, Intra can also do synonym queries, which are based on Wordnet synsets accessed by way of nltk. Synonyms are generated and AND-ed together. For example, the query **qlike('joy', 2)** resolves to **qand('rejoice, joyousness, joyfulness, joy, deilght, gladden, pleasure')**.
 
 So, using this text:
 
