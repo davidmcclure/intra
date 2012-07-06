@@ -8,7 +8,11 @@ def load(url):
     global text
     res = r.get(url)
     text = Text(res.text)
-    print res.text[:1000]
+    print 'loaded'
+
+def paste(stream):
+    global text
+    text = Text(stream)
 
 def qand(query, width=1000):
     global text
