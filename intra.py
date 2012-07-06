@@ -5,6 +5,7 @@ import numpy as np
 from stemming.porter2 import stem
 from nltk.corpus import wordnet as wn
 from operator import itemgetter
+import copy
 import re
 
 
@@ -112,12 +113,13 @@ class Text:
         self.words = []
         offset = None
         length = len(self.text)
+        text = copy.copy(self.text)
         word = ''
         # Replace all scrub chars with whitespace.
         for s in scrub:
-            self.text = self.text.replace(s, ' ')
+            text = text.replace(s, ' ')
         # Walk characters.
-        for i, char in enumerate(self.text):
+        for i, char in enumerate(text):
             if char != ' ':
                 word += char
                 if offset is None: offset = i
