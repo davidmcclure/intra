@@ -16,7 +16,7 @@ For example, using this text:
 word word match1 match1 word word word word match1 match2 word word
 ```
 
-The signal curve for the query qand('match1') with a decay halflife of 2 words looks like this:
+The signal curve for the query ```python qand('match1', 2)``` with a decay halflife of 2 words looks like this:
 
 Since a curve is summed onto the array for each term match, term clustering is automatically modeled in the final signal - the curve is higher around offsets 3 and 4 than it is at 8 because the decay curves for the two side-by-side occurrences of "match1" add on top of one another to produce a higher signal value.
 
