@@ -63,9 +63,9 @@ from driver import *
 Then, register a text. Webpages can be loaded remotely, or text can be pasted directly into the terminal.
 
 ```python
-// either:
+# either:
 paste('Some text.')
-// or remote content (here, Leaves of Grass):
+# or remote content (here, Leaves of Grass):
 load('http://www.gutenberg.lib.md.us/1/3/2/1322/1322.txt')
 ```
 
