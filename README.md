@@ -8,7 +8,7 @@ Second, Intra's approach to modeling relevancy makes it simple to go beyond sing
 
 ## The query model
 
-Intra models _relevancy_ as a gaussian curve that "emits" in both directions away from a term match. When a query is executed, Intra starts with a one-dimensional array with a length equal to the wordcount of the text, filled with zeros (one zero per word). For each term match in the text, Intra will compute out a gaussian curve with a height of 1 centered on the offset position of the matching token.
+Intra models relevancy as a gaussian curve that "emits" in both directions away from a term match. When a query is executed, Intra starts with a one-dimensional array with a length equal to the wordcount of the text, filled with zeros (one zero per word). For each term match in the text, Intra will compute out a gaussian curve with a height of 1 centered on the offset position of the matching token.
 
 For example, using this text:
 
