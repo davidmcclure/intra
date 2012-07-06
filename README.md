@@ -77,9 +77,10 @@ qand('i me mine self')
 
 ![whitman](http://dclure.org/wp-content/uploads/2012/07/whitman.png)
 
-Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click. Zoom and pan with the default matplotlib controls.
+**Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click.** Zoom and pan with the default matplotlib controls.
 
 ## Todo
 
   * A real query parser, which would eliminate the need for different query functions. Eg, queries like "natasha AND (pierre OR andrei) NOT anatole"
+
   * A hosted web application that would let users register texts by pasting URLs or raw content, and then execute queries and browse the signals/texts by way of an in-browser JavaScript application.
