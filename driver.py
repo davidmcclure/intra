@@ -1,13 +1,18 @@
 from  intra import *
 import matplotlib.pyplot as plt
 import requests as r
+import re
 
 text = None
 
-def load(url):
+def load(url, html=False):
     global text
     res = r.get(url)
-    text = Text(res.text)
+    stream = res.text
+    if html:
+        p = re.compile(r'<.*?>')
+        stream = p.sub('', stream)
+    text = Text(stream)
     print 'loaded'
 
 def paste(stream):
