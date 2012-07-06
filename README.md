@@ -1,6 +1,6 @@
 # Intra
 
-Intra is a prototype application that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of document-based approaches by chopping long texts into short segments and then returning subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a y-axis value for each word position.
+Intra is a prototype application designed to be used with IPython that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of document-based approaches by chopping long texts into short segments and then returning subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a y-axis value for each word position.
 
 This approach has two advantages. First, it makes it possible for the user to immediately intuit the structure of the query result. Instead of having to make substantive decisions for the user about what portions of the text get returned and in what order, the signal data can be presented unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
 
