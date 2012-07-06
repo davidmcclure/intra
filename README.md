@@ -65,7 +65,7 @@ Then, register a text. Webpages can be loaded remotely, or text can be pasted di
 ```python
 // either:
 paste('Some text.')
-// or:
+// or remote content (here, Leaves of Grass):
 load('http://www.gutenberg.lib.md.us/1/3/2/1322/1322.txt')
 ```
 
@@ -77,7 +77,7 @@ qand('i me mine self')
 
 ![whitman](http://dclure.org/wp-content/uploads/2012/07/whitman.png)
 
-**Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click.** Zoom and pan with the default matplotlib controls.
+Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click. Zoom and pan with the default matplotlib controls.
 
 ## Todo
 
