@@ -4,7 +4,7 @@ Intra is a simple, feature-barren prototype application that experiments with a 
 
 This approach has two advantages. First, it makes it possible for the user to immediately intuit the structure of the query result across the linear duration of the text - _positional_ information about the relevancy of the query is completely baked into the presentation of the results. This is valuable information, especially when the user already has knowledge of the text. Instead of just getting a vertical stack of algorithmically ranked snippets of some arbitrary length, the signal data is immediately intuitive and actionable in its "raw" form. Instead of having to make substantive decisisions for the user about what gets returned and in what order, the signal data can be presented unmodified and unadorned, allowing the user to bore in on the actual source text by interacting with the signal graph.
 
-Second, Intra's approach to modeling relevancy makes it simple to go beyond single-term searches (control+f) and model compound and boolean queries (AND, OR, NOT, LIKE) just by arithmetically summing a collection of signals with different terms, signs, and widths (see below).
+Second, Intra's approach to modeling relevancy makes it simple to go beyond single-term searches and model compound and boolean queries (AND, OR, NOT, LIKE) just by arithmetically summing a collection of signals with different terms, signs, and widths (see below).
 
 ## The query model
 
@@ -16,17 +16,23 @@ For example, using this text:
 word word match1 match1 word word word word match1 match2 word word
 ```
 
-The signal curve for the query ```python qand('match1', 2)``` with a decay halflife of 2 words looks like this:
+The signal curve for the query **qand('match1', 2)** with a decay halflife of 2 words looks like this:
+
+![qand1](http://dclure.org/wp-content/uploads/2012/07/qand-1.png)
 
 Since a curve is summed onto the array for each term match, term clustering is automatically modeled in the final signal - the curve is higher around offsets 3 and 4 than it is at 8 because the decay curves for the two side-by-side occurrences of "match1" add on top of one another to produce a higher signal value.
 
-For more than one query term, logical "AND" is modeled by just computing the curves for each of the terms and then summing them to form a composite signal. For example, the qand('match1 match2') gives this signal:
+For more than one query term, logical "AND" is modeled by just computing the curves for each of the terms and then summing them to form a composite signal. For example, **qand('match1 match2', 2)** gives this signal:
+
+![qand2](http://dclure.org/wp-content/uploads/2012/07/qand-2.png)
 
 Here, though, you can see that the phrase "match1 match2" produced a higher spike than "match1 match1." This is because Intra scales the center values for the decay curves based on the relative frequency of the terms in the query, the intuition beight that infrequent terms should be "higher energy" than frequent terms.
 
-Logical "OR" queries, meanwhile, do not scale the center values and just test each token to see if it matches any of the query terms. qor('match1 match2') gives:
+Logical "OR" queries, meanwhile, do not scale the center values and just test each token to see if it matches any of the query terms. **qor('match1 match2', 2)** gives:
 
-As an early experiment, Intra can also do synonym queries, which are based on Wordnet synsets accessed by way of nltk. Synonyms are generated and AND-ed together. For example, the query qlike('joy') resolves to qand('rejoice, joyousness, joyfulness, joy, deilght, gladden, pleasure').
+![qor1](http://dclure.org/wp-content/uploads/2012/07/qor-1.png)
+
+As an early experiment, Intra can also do synonym queries, which are based on Wordnet synsets accessed by way of nltk. Synonyms are generated and AND-ed together. For example, the query **qlike('joy', 2)** resolves to qand('rejoice, joyousness, joyfulness, joy, deilght, gladden, pleasure').
 
 So, using this text:
 
@@ -35,6 +41,8 @@ word word gladden joy word word word word rejoice word word word
 ```
 
 qlike('joy', 2) gives:
+
+![qlike1](http://dclure.org/wp-content/uploads/2012/07/qlike-1.png)
 
 ## Usage
 
@@ -66,6 +74,8 @@ Then, queries can be executed with qand, qor, and qlike:
 ```python
 qand('i me mine self')
 ```
+
+![whitman](http://dclure.org/wp-content/uploads/2012/07/whitman.png)
 
 Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click. Zoom and pan with the default matplotlib controls.
 
