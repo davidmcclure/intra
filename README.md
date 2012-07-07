@@ -1,14 +1,20 @@
 # Intra
 
-Intra is a prototype application designed to be used with IPython that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of document-based approaches by chopping long texts into short segments and then returning subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a y-axis value for each word position.
+Intra is a prototype application that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of (inter-)document-based approaches by chopping long texts into short segments and then returning subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a y-axis value for each word position.
 
-This approach has two advantages. First, it makes it possible for the user to immediately intuit the structure of the query result. Instead of having to make substantive decisions for the user about what portions of the text get returned and in what order, the signal data can be presented unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
+This approach has three advantages:
 
-Second, Intra's approach to modeling relevancy makes it simple to execute compound boolean queries (AND, OR, NOT, LIKE) just by arithmetically summing an arbitrary number of signals.
+    1. First, it makes it possible for the user to immediately intuit the structure of the query result. Instead of having to make substantive (and usually opaque) decisions behind the scenes about what portions of the text get returned and in what order, the signal data can be presented almost completely unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
+
+    2. Related to #1, the signal graph automatically conveys "positional" information about the distribution of query relevance across the duration of the text. Instead of getting back a vertical stack of intermixed snippets that come from different parts of the text, the signal graph immediately conveys information about not only about what parts of the text are relevant but also how those parts are relatively positioned in the text. This is especially useful in cases where the user already has knowledge of the text (eg, literary analysis) and is trying to confirm, deny, or discover thematic movements or other kinds of _change_ over the course of the text.
+
+    3. Finally, Intra's approach to modeling relevancy makes it extremely simple to extrapolate upwards into compound or boolean queries (AND, OR, NOT, LIKE) without having to use complex clustering alrogithms (and again, without having to make concealed decisions for the user). Each signal can be treated as a "layer" of relevance information across the text interval, and the signals can be arithmetically summed as one-dimensional matrices to create synthetic signals that represent complex search queries. In essence, this brings the level of sophistication and control that we expect from inter-document searches (Google, Solr, etc.) to _intra_-document searches, which until now have been limited to literal character string matching (control-f).
 
 ## The query model
 
-Intra models relevancy as a gaussian curve that is "emitted" in both directions away from a term match. When a query is executed, Intra starts by shelling out a one-dimensional array with a length equal to the wordcount of the text filled with zeros (one zero per word). For each term match in the text, Intra will sum onto the array the values of a gaussian curve centered on the offset position of the term match.
+Intra models relevancy in an extremely simple way that tries to capture basic intuitions about how how meaning dissipates around a term match. Whenever a term match is found in the text, a gaussian curve that is "emitted" in both directions away from the offset position of the match. The intuition is that terms can be imagined to have a "meaning energy" that is strongest at their actual position of the text, which then tapers off gradually at first within the surronding phrase, sentence, paragraph, or section and then falls of sharpy beyond that. 
+
+When a query is executed, Intra starts by creating a one-dimensional array with a length equal to the wordcount of the text filled with zeros - one zero per word. For each term match in the text, Intra will sum onto the array the values of a gaussian curve centered on the offset position of the term match.
 
 For example, using this text:
 
@@ -78,6 +84,60 @@ qand('i me mine self')
 ![whitman](http://dclure.org/wp-content/uploads/2012/07/whitman.png)
 
 Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click. Zoom and pan with the default matplotlib controls.
+
+Anecdotally, Intra appears to do a good job of finding "self-y" passages in _Leaves of Grass_. Clicking near the high peak around word 60,000 in the graph above gives this passage:
+
+```text
+-------------------
+de,)
+  The sea whisper'd me.
+
+
+
+
+As I Ebb'd with the Ocean of Life
+
+       1
+  As I ebb'd with the ocean of life,
+  As I wended the shores I know,
+  As I walk'd where the ripples continually wash you Paumanok,
+  Where they rustle up hoarse and sibilant,
+  Where the fierce old mother endlessly cries for her castaways,
+  I musing late in the autumn day, gazing off southward,
+  Held by this electric self out of the pride of which I utter poems,
+  Was seiz'd by the spirit that trails in the lines underfoot,
+  The rim, the sediment that stands for all the water and all the land
+      of the globe.
+
+  Fascinated, my eyes reverting from the south, dropt, to follow those
+      slender windrows,
+  Chaff, straw, splinters of wood, weeds, and the sea-gluten,
+  Scum, scales from shining rocks, leaves of salt-lettuce, left by the tide,
+  Miles walking, the sound of breaking waves the other side of me,
+  Paumanok there and then as I thought the old thought of likenesses,
+  These you presented to me you fish-shaped island,
+  As I wended the shores I know,
+  As I walk'd with that electric self seeking types.
+
+       2
+  As I wend to the shores I know not,
+  As I list to the dirge, the voices of men and women wreck'd,
+  As I inhale the impalpable breezes that set in upon me,
+  As the ocean so mysterious rolls toward me closer and closer,
+  I too but signify at the utmost a little wash'd-up drift,
+  A few sands and dead leaves to gather,
+  Gather, and merge myself as part of the sands and drift.
+
+  O baffled, balk'd, bent to the very earth,
+  Oppress'd with myself that I have dared to open my mouth,
+  Aware now that amid all that blab whose echoes recoil upon me I have
+      not once had the least idea who or what I am,
+  But that before all my arrogant poems the real Me stands yet
+      untouch'd, untold, altogether unreach'd,
+  Withdrawn far, mocking me with mock-congratulatory signs and bows,
+  With peals of distant ironical laughter a
+-------------------
+```
 
 ## Todo
 
