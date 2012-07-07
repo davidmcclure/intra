@@ -8,7 +8,7 @@ This approach has three advantages:
 
   2. Related to #1, the signal graph automatically conveys "positional" information about the distribution of query relevance across the duration of the text. Instead of getting back a vertical stack of intermixed snippets that come from different parts of the text, the signal graph immediately conveys information about not only about what parts of the text are relevant but also how those parts are relatively positioned in the text. This is especially useful in cases where the user already has knowledge of the text (eg, literary analysis) and is trying to confirm, deny, or discover thematic movements or other kinds of _change_ over the course of the text.
 
-  3. Finally, Intra's approach to modeling relevancy makes it extremely simple to extrapolate upwards into compound, boolean, or exclusion queries (AND, OR, NOT, LIKE) without having to rely on separate, operator-specific alrogithms (and again, without having to make concealed decisions for the user). Each signal can be treated as a "layer" of relevance information across the text interval, and the signals can be arithmetically summed as one-dimensional matrices to create synthetic signals that represent complex search queries. In essence, this brings the level of sophistication and control that we expect from inter-document searches (Google, Solr, etc.) to _intra_-document searches, which until now have been limited to literal character string matching (control-f).
+  3. Finally, Intra's approach to modeling relevancy makes it extremely simple to extrapolate upwards into compound, boolean, or exclusion queries (AND, OR, NOT, LIKE) without having to rely on separate, operator-specific alrogithms (and again, without having to make concealed decisions for the user). Each signal can be treated as a "layer" of relevance information across the text interval, and the signals can be arithmetically summed as one-dimensional matrices to create synthetic signals that represent complex search queries. This brings the level of sophistication and control that we expect from inter-document searches (Google, Solr, etc.) to _intra_-document searches, which until now have been limited to literal character string matching (control-f).
 
 ## The query model
 
@@ -54,7 +54,7 @@ qlike('joy', 2) gives:
 
 Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy].
 
-Run iPython with Pylab:
+Run iPython with PyLab:
 
 ```bash
 ipython -pylab
@@ -208,8 +208,6 @@ Andrew's life. Though outwardly he continued to live in the same old
 way, inwardly he began a new life.
 ```
 
-
-
 ## Todo
 
   * A real query parser, which would eliminate the need for different query functions and make it possible to combine different boolean operators. For example, queries like:
@@ -218,6 +216,12 @@ way, inwardly he began a new life.
     * "natasha AND LIKE (joy OR love OR happy OR smile)"
     * "hamlet AND LIKE (divine OR holy OR god)"
 
-  * A hosted web application that would let users register texts by pasting URLs or raw content, and then execute queries and browse the signals/texts by way of an in-browser JavaScript application.
+  * A hosted web application structured like Voyant that would let users register texts by pasting URLs or raw content. Users could then execute queries and browse the result signals / texts using an in-browser JavaScript application, perhaps using [Richshaw][rickshaw] for plotting.
 
 [ipython]: http://ipython.org/
+[pylab]: http://www.scipy.org/PyLab
+[matplotlib]: http://matplotlib.sourceforge.net/
+[rickshaw]: http://code.shutterstock.com/rickshaw/examples/
+[nltk]: http://nltk.org/
+[stemming]: http://pypi.python.org/pypi/stemming/1.0
+[numpy]: http://numpy.scipy.org/
