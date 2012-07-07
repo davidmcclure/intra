@@ -26,7 +26,7 @@ The signal curve for the query **qand('match1', 2)** with a decay halflife of 2 
 
 ![qand1](http://dclure.org/wp-content/uploads/2012/07/qand-1.png)
 
-Since a curve is summed onto the array for each term match, term clustering is automatically modeled in the final signal - the curve is higher around offsets 3 and 4 than it is at 8 because the decay curves for the two side-by-side occurrences of "match1" add on top of one another to produce a higher signal value.
+Since a decay curve is summed onto the array for each term match, term clustering is automatically modeled in the final signal - the curve is higher around offsets 3 and 4 than it is at 8 because the decay curves for the two side-by-side occurrences of "match1" add on top of one another to produce a higher aggregate signal value.
 
 For more than one query term, logical "AND" is modeled by just computing the curves for each of the terms and then summing them to form a composite signal. For example, **qand('match1 match2', 2)** gives this signal:
 
@@ -38,7 +38,7 @@ Logical "OR" queries, meanwhile, do not scale the center values and just test ea
 
 ![qor1](http://dclure.org/wp-content/uploads/2012/07/qor-1.png)
 
-As an early experiment, Intra can also do synonym queries, which are based on Wordnet synsets accessed by way of nltk. Synonyms are generated and AND-ed together. For example, the query **qlike('joy', 2)** resolves to **qand('rejoice, joyousness, joyfulness, joy, deilght, gladden, pleasure')**.
+As an early experiment, Intra can also do synonym queries, which are based on [Wordnet][wordnet] synsets accessed by way of [NLTK][nltk]. Synonyms are generated and AND-ed together. For example, the query **qlike('joy', 2)** resolves to **qand('rejoice, joyousness, joyfulness, joy, deilght, gladden, pleasure')**.
 
 So, using this text:
 
@@ -52,7 +52,7 @@ qlike('joy', 2) gives:
 
 ## Usage
 
-Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy].
+Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy]. I find that it's easiest to assemble the pieces using [virtualenv][virtualenv].
 
 Run iPython with PyLab:
 
@@ -225,3 +225,5 @@ way, inwardly he began a new life.
 [nltk]: http://nltk.org/
 [stemming]: http://pypi.python.org/pypi/stemming/1.0
 [numpy]: http://numpy.scipy.org/
+[wordnet]: http://wordnet.princeton.edu/
+[virtualenv]: http://pypi.python.org/pypi/virtualenv/
