@@ -232,6 +232,8 @@ Andrew's life. Though outwardly he continued to live in the same old
 way, inwardly he began a new life.
 ```
 
+Generally, it seems that Intra is good at doing "concept" or "theme" searches that layer up a cluster of terms. When I write papers, this is the level of abstraction that I tend to think at.
+
 ## Todo
 
   * A real query parser, which would eliminate the need for different query functions and make it possible to combine different boolean operators. For example, queries like:
