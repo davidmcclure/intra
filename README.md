@@ -52,7 +52,7 @@ qlike('joy', 2) gives:
 
 ## Usage
 
-In its current form, Intra requires Python 2.6, ipython, pylab, matplotlib, nltk, stemming, and numpy.
+Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy].
 
 Run iPython with Pylab:
 
@@ -219,3 +219,5 @@ way, inwardly he began a new life.
     * "hamlet AND LIKE (divine OR holy OR god)"
 
   * A hosted web application that would let users register texts by pasting URLs or raw content, and then execute queries and browse the signals/texts by way of an in-browser JavaScript application.
+
+[ipython]: http://ipython.org/
