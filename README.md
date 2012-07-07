@@ -54,7 +54,7 @@ qlike('joy', 2) gives:
 
 ## Usage
 
-Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy]. (The pieces can be assembled using [virtualenv][virtualenv].
+Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy]. (The pieces can be assembled using [virtualenv][virtualenv].)
 
 Run iPython with PyLab:
 
