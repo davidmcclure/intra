@@ -242,7 +242,7 @@ Generally, it seems that Intra is good at doing "concept" or "theme" searches th
     * "natasha AND LIKE (joy OR love OR happy OR smile)"
     * "hamlet AND LIKE (divine OR holy OR god)"
 
-  * A hosted, no-registration web application (structurally, like Voyant) that would let users register texts by pasting in a URL or a raw text stream. Users could then execute queries and browse the result signals / texts using an in-browser JavaScript application, perhaps using [Richshaw][rickshaw] for plotting.
+  * A hosted, no-registration web application (structurally, like Voyant) that would let users create texts by pasting in a URL or a raw text stream. Users could then execute queries and browse the result signals / texts using an in-browser JavaScript application, perhaps using [Richshaw][rickshaw] for plotting.
 
 [ipython]: http://ipython.org/
 [pylab]: http://www.scipy.org/PyLab
