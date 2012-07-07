@@ -85,7 +85,9 @@ qand('i me mine self')
 
 Once the signal renders in the matplotlib window, click anywhere on the graph and Intra will print a short snippet of text centered around the token offset that corresponds to the x-axis position of the click. Zoom and pan with the default matplotlib controls.
 
-Anecdotally, Intra appears to do a good job of finding "self-y" passages in _Leaves of Grass_. Clicking near the high peak around word 60,000 in the graph above gives this passage:
+## Does it work?
+
+Anecdotally, it appears to. For example, with the example query above on _Leaves of Grass_, Intra appears to do a good job of finding particularly "self-y" passages. Clicking near the high peak around word 60,000 in the graph above gives this passage:
 
 ```text
 -------------------
@@ -139,8 +141,81 @@ As I Ebb'd with the Ocean of Life
 -------------------
 ```
 
+Likewise, Intra seems to be able to clearly resolve thematically important locations in texts. Working with _War and Peace_:
+
+```python
+load('http://www.gutenberg.lib.md.us/2/6/0/2600/2600.txt')
+```
+
+The query **qand('andrew sky')** cleanly picks out a series of oft-discussed passages in which Andrei ("andrew" in the query, to conform with the Garnett translation) gazes up into the Russian sky at key moments of spiritual growth:
+
+![andrei](http://dclure.org/wp-content/uploads/2012/07/wp.png)
+
+The two side-by-side high peaks at around word 125,000 give these two paragraphs, which constitute the first (and most significant) occurences of the theme when Andrei is injured at Austerliz:
+
+```text
+"What's this? Am I falling? My legs are giving way," thought he, and
+fell on his back. He opened his eyes, hoping to see how the struggle of
+the Frenchmen with the gunners ended, whether the red-haired gunner had
+been killed or not and whether the cannon had been captured or saved.
+But he saw nothing. Above him there was now nothing but the sky--the
+lofty sky, not clear yet still immeasurably lofty, with gray clouds
+gliding slowly across it. "How quiet, peaceful, and solemn; not at all
+as I ran," thought Prince Andrew--"not as we ran, shouting and fighting,
+not at all as the gunner and the Frenchman with frightened and angry
+faces struggled for the mop: how differently do those clouds glide
+across that lofty infinite sky! How was it I did not see that lofty sky
+before? And how happy I am to have found it at last! Yes! All is vanity,
+all falsehood, except that infinite sky. There is nothing, nothing, but
+that. But even it does not exist, there is nothing but quiet and peace.
+Thank God!..."
+```
+
+And:
+
+```text
+Prince Andrew understood that this was said of him and that it was
+Napoleon who said it. He heard the speaker addressed as Sire. But he
+heard the words as he might have heard the buzzing of a fly. Not only
+did they not interest him, but he took no notice of them and at once
+forgot them. His head was burning, he felt himself bleeding to death,
+and he saw above him the remote, lofty, and everlasting sky. He knew it
+was Napoleon--his hero--but at that moment Napoleon seemed to him such a
+small, insignificant creature compared with what was passing now between
+himself and that lofty infinite sky with the clouds flying over it. At
+that moment it meant nothing to him who might be standing over him, or
+what was said of him; he was only glad that people were standing near
+him and only wished that they would help him and bring him back to
+life, which seemed to him so beautiful now that he had today learned to
+understand it so differently. He collected all his strength, to stir and
+utter a sound. He feebly moved his leg and uttered a weak, sickly groan
+which aroused his own pity.
+```
+
+Meanwhile, the third-highest peak, near word 175,000, is another key occurrence of the trope that directly references the Austerliz scene:
+
+```text
+"Yes, if it only were so!" said Prince Andrew. "However, it is time to
+get on," he added, and, stepping off the raft, he looked up at the sky
+to which Pierre had pointed, and for the first time since Austerlitz saw
+that high, everlasting sky he had seen while lying on that battlefield;
+and something that had long been slumbering, something that was best
+within him, suddenly awoke, joyful and youthful, in his soul. It
+vanished as soon as he returned to the customary conditions of his
+life, but he knew that this feeling which he did not know how to develop
+existed within him. His meeting with Pierre formed an epoch in Prince
+Andrew's life. Though outwardly he continued to live in the same old
+way, inwardly he began a new life.
+```
+
+
+
 ## Todo
 
-  * A real query parser, which would eliminate the need for different query functions. Eg, queries like "natasha AND (pierre OR andrei) NOT anatole"
+  * A real query parser, which would eliminate the need for different query functions and make it possible to combine different boolean operators. For example, queries like:
+
+    * "natasha AND (pierre OR andrei) NOT anatole"
+    * "natasha AND LIKE (joy OR love OR happy OR smile)"
+    * "andrei AND sky AND battle)"
 
   * A hosted web application that would let users register texts by pasting URLs or raw content, and then execute queries and browse the signals/texts by way of an in-browser JavaScript application.
