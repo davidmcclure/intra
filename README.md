@@ -14,6 +14,8 @@ This approach has three advantages:
 
 Intra models relevancy in an extremely simple way that tries to capture basic intuitions about how how meaning dissipates around a term match. Whenever a term match is found in the text, a gaussian curve that is "emitted" in both directions away from the offset position of the match. The intuition is that terms can be imagined to have a "meaning energy" that is strongest at their actual position in the text. The energy tapers off gradually within the immediate context of the surronding phrase, sentence, paragraph, or section, and then falls of sharpy beyond that. 
 
+![gaussian](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/1000px-Normal_Distribution_PDF.svg.png)
+
 When a query is executed, Intra starts by creating a one-dimensional array with a length equal to the wordcount of the text filled with zeros - one zero per word. For each term match in the text, Intra will sum onto the array the values of a gaussian curve centered on the offset position of the term match.
 
 For example, using this text:
