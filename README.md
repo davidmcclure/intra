@@ -169,7 +169,7 @@ Or, working with _War and Peace_:
 load('http://www.gutenberg.lib.md.us/2/6/0/2600/2600.txt')
 ```
 
-The query **qand('andrew sky')** cleanly picks out a series of oft-discussed passages in which Andrei ("andrew" in the query, to conform with the Garnett translation) gazes up into the Russian sky at key moments of spiritual growth:
+The query **qand('andrew sky')** cleanly picks out a series of much-discussed passages in which Andrei ("andrew" in the query, to conform with the Garnett translation) gazes up into the Russian sky at key moments of spiritual growth:
 
 ![andrei](http://dclure.org/wp-content/uploads/2012/07/wp.png)
 
@@ -238,7 +238,7 @@ way, inwardly he began a new life.
     * "natasha AND LIKE (joy OR love OR happy OR smile)"
     * "hamlet AND LIKE (divine OR holy OR god)"
 
-  * A hosted web application structured like Voyant that would let users register texts by pasting URLs or raw content. Users could then execute queries and browse the result signals / texts using an in-browser JavaScript application, perhaps using [Richshaw][rickshaw] for plotting.
+  * A hosted, no-registration web application (structurally, like Voyant) that would let users register texts by pasting in a URL or a raw text stream. Users could then execute queries and browse the result signals / texts using an in-browser JavaScript application, perhaps using [Richshaw][rickshaw] for plotting.
 
 [ipython]: http://ipython.org/
 [pylab]: http://www.scipy.org/PyLab
