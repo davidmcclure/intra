@@ -4,7 +4,7 @@ Intra is a prototype application that experiments with a new approach to searchi
 
 This approach has three advantages:
 
-  1. First, it makes it possible for the user to immediately intuit the structure of the query result. Instead of having to make substantive (and usually opaque) decisions behind the scenes about what portions of the text get returned and in what order, the signal data can be presented almost completely unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
+  1. First, it makes it possible for the user to immediately intuit the structure of the entire query result. Instead of having to make substantive (and usually opaque) decisions behind the scenes about what portions of the text get returned and in what order, the signal data can be presented almost completely unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
 
   2. Related to #1, the signal graph automatically conveys "positional" information about the distribution of query relevance across the duration of the text. Instead of getting back a vertical stack of intermixed snippets that come from different parts of the text, the signal graph immediately conveys information about not only about what parts of the text are relevant but also how those parts are relatively positioned in the text. This is especially useful in cases where the user already has knowledge of the text (eg, literary analysis) and is trying to confirm, deny, or discover thematic movements or other kinds of _change_ over the course of the text.
 
@@ -141,7 +141,7 @@ As I Ebb'd with the Ocean of Life
 -------------------
 ```
 
-Likewise, Intra seems to be able to clearly resolve thematically important locations in texts. Working with _War and Peace_:
+Or, working with _War and Peace_:
 
 ```python
 load('http://www.gutenberg.lib.md.us/2/6/0/2600/2600.txt')
@@ -216,6 +216,6 @@ way, inwardly he began a new life.
 
     * "natasha AND (pierre OR andrei) NOT anatole"
     * "natasha AND LIKE (joy OR love OR happy OR smile)"
-    * "andrei AND sky AND battle)"
+    * "hamlet AND LIKE (divine OR holy OR god)"
 
   * A hosted web application that would let users register texts by pasting URLs or raw content, and then execute queries and browse the signals/texts by way of an in-browser JavaScript application.
