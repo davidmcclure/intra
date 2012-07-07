@@ -12,7 +12,7 @@ This approach has three advantages:
 
 ## The query model
 
-Intra models relevancy in an extremely simple way that tries to capture basic intuitions about how how meaning dissipates around a term match. Whenever a term match is found in the text, a gaussian curve that is "emitted" in both directions away from the offset position of the match. The intuition is that terms can be imagined to have a "meaning energy" that is strongest at their actual position of the text, which then tapers off gradually within the immediate context of the surronding phrase, sentence, paragraph, or section and then falls of sharpy beyond that. 
+Intra models relevancy in an extremely simple way that tries to capture basic intuitions about how how meaning dissipates around a term match. Whenever a term match is found in the text, a gaussian curve that is "emitted" in both directions away from the offset position of the match. The intuition is that terms can be imagined to have a "meaning energy" that is strongest at their actual position in the text. The energy tapers off gradually within the immediate context of the surronding phrase, sentence, paragraph, or section, and then falls of sharpy beyond that. 
 
 When a query is executed, Intra starts by creating a one-dimensional array with a length equal to the wordcount of the text filled with zeros - one zero per word. For each term match in the text, Intra will sum onto the array the values of a gaussian curve centered on the offset position of the term match.
 
@@ -87,16 +87,10 @@ Once the signal renders in the matplotlib window, click anywhere on the graph an
 
 ## Does it work?
 
-Anecdotally, it appears to. For example, with the example query above on _Leaves of Grass_, Intra appears to do a good job of finding particularly "self-y" passages. Clicking near the high peak around word 60,000 in the graph above gives this passage:
+Anecdotally, it appears to. For example, with the example query above on _Leaves of Grass_, Intra appears to do a good job of finding particularly "self-y" passages. Clicking near the high peak around word 60,000 in the graph above centers exactly on the start of "As I Ebb'd with the Ocean of Life":
 
 ```text
 -------------------
-de,)
-  The sea whisper'd me.
-
-
-
-
 As I Ebb'd with the Ocean of Life
 
        1
@@ -139,6 +133,34 @@ As I Ebb'd with the Ocean of Life
   Withdrawn far, mocking me with mock-congratulatory signs and bows,
   With peals of distant ironical laughter a
 -------------------
+```
+
+The second-highest peak, near word 20,000, is also distinctly me-mine-I-ish:
+
+```text
+ The soldier camp'd or upon the march is mine,
+  On the night ere the pending battle many seek me, and I do not fail them,
+  On that solemn night (it may be their last) those that know me seek me.
+  My face rubs to the hunter's face when he lies down alone in his blanket,
+  The driver thinking of me does not mind the jolt of his wagon,
+  The young mother and old mother comprehend me,
+  The girl and the wife rest the needle a moment and forget where they are,
+  They and all would resume what I have told them.
+
+       48
+  I have said that the soul is not more than the body,
+  And I have said that the body is not more than the soul,
+  And nothing, not God, is greater to one than one's self is,
+  And whoever walks a furlong without sympathy walks to his own
+      funeral drest in his shroud,
+  And I or you pocketless of a dime may purchase the pick of the earth,
+  And to glance with an eye or show a bean in its pod confounds the
+      learning of all times,
+  And there is no trade or employment but the young man following it
+      may become a hero,
+  And there is no object so soft but it makes a hub for the wheel'd universe,
+  And I say to any man or woman, Let your soul stand cool and composed
+      before a million universes.
 ```
 
 Or, working with _War and Peace_:
