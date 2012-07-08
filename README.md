@@ -34,7 +34,7 @@ For more than one query term, logical "AND" is modeled by just computing the cur
 
 ![qand2](http://dclure.org/wp-content/uploads/2012/07/qand-2.png)
 
-Here, though, you can see that the phrase "match1 match2" produced a higher spike than "match1 match1." This is because Intra scales the center values for the decay curves based on the relative frequency of the terms in the query, the intuition beight that infrequent terms should be "higher energy" than frequent terms.
+Here, though, you can see that the phrase "match1 match2" produced a higher spike than "match1 match1." This is because Intra scales the center values for the decay curves based on the relative frequency of the terms in the query, the intuition being that infrequent terms should be "higher energy" than frequent terms.
 
 Logical "OR" queries, meanwhile, do not scale the center values and just test each token to see if it matches any of the query terms. **qor('match1 match2', 2)** gives:
 
