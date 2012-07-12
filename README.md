@@ -2,6 +2,8 @@
 
 Intra is a prototype application that experiments with a new approach to searching inside of long texts. Instead of trying to imitate the structure of (inter-)document-based approaches by chopping long texts into short segments and then returning subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a y-axis value for each word position.
 
+In the final presentation of the result, the user can bore down to specific textual passages just by clicking on the signal graph, which "focuses" the text to the position that corresponds to the x-axis offset of the click.
+
 This approach has three advantages:
 
   1. First, it makes it possible for the user to immediately intuit the structure of the entire query result. Instead of having to make substantive (and usually opaque) decisions behind the scenes about what portions of the text get returned and in what order, the signal data can be presented almost completely unmodified, allowing the user to bore down into the source text by interacting directly with the signal graph.
