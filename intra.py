@@ -181,8 +181,9 @@ class Signal:
                 max = term.term_count
         # Scale the term values.
         for term in self.terms:
-            val = float(max)/term.term_count
-            term.value = term.value * val
+            if term.term_count > 0:
+                val = float(max)/term.term_count
+                term.value = term.value * val
 
     def generate(self, text):
         '''Generate signal values.
