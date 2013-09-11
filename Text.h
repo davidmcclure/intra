@@ -6,6 +6,9 @@
 #define TEXT_H
 
 #include <string>
+#include <vector>
+#include <tr1/unordered_map>
+
 using namespace std;
 
 
@@ -15,12 +18,13 @@ class Text
   public:
 
     Text( string text );
-    string text;
-    int length;
 
   private:
 
     void tokenize( );
+    string text;
+    vector<pair<string, int> > tokens;
+    tr1::unordered_map<string, vector<int> > positions;
 
 };
 

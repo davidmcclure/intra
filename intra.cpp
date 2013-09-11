@@ -7,5 +7,5 @@
 
 int main(  )
 {
-  Text t( "test text" );
+  Text text( "by the pricking of my thumbs..." );
 }
