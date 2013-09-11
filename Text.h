@@ -16,6 +16,7 @@ class Text
 
     Text( string text );
     string text;
+    int length;
 
   private:
 
