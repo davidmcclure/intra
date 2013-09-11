@@ -23,12 +23,11 @@ Text::Text( string text ) : text( text )
 void Text::tokenize( )
 {
 
-  int length = text.size( );
   int charOffset = 0;
   int tokenCount = 0;
   string word = "";
 
-  for( int i = 0; i < length; ++i ) {
+  for( int i = 0; i < text.size( ); ++i ) {
 
     char c = text[i];
     bool isLetter = isalpha( c );
@@ -38,7 +37,7 @@ void Text::tokenize( )
       word += c;
     }
 
-    if( word != "" && ( !isLetter || i+1 == length ) ) {
+    if( word != "" && ( !isLetter || i+1 == text.size( ) ) ) {
       positions[word].push_back( tokenCount++ );
       tokens.push_back( make_pair( word, charOffset ) );
       word = "";
