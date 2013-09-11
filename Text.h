@@ -23,8 +23,9 @@ class Text
 
     void tokenize( );
     string text;
-    vector<pair<string, int> > tokens;
+
     tr1::unordered_map<string, vector<int> > positions;
+    vector<pair<string, int> > tokens;
 
 };
 
