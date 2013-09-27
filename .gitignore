@@ -1,2 +1,2 @@
-*.out
-*.h.gch
+target/
+project/
