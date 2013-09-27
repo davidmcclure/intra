@@ -2,14 +2,13 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=80; */
 
 
-package com.intra
+package com.mcclure.intra
 import scala.collection.mutable.ArrayBuffer
 
 
 class Text(val text: String) {
 
-  val tokens  = ArrayBuffer[String]()
-  val offsets = ArrayBuffer[Int]()
+  val tokens = ArrayBuffer[Tuple2[String, Int]]()
 
   def tokenize {
 
@@ -28,13 +27,13 @@ class Text(val text: String) {
         token += char
       }
 
-      // If a token has been accumulated and either (a) the current character
-      // isn't a letter or we're at the last character in the text, store the
-      // token / character offset and clear the running token.
+      // If a non-empty token has been accumulated and either (a) the current
+      // character isn't a letter, meaning we're at the end of a word, or (b)
+      // we're at the last character in the text, store the token / character
+      // offset and clear the running token.
 
       if (token != "" && (!char.isLetter || index+1 == text.length)) {
-        tokens += token
-        offsets += index
+        tokens += Tuple2(token, index)
         token = ""
       }
 
