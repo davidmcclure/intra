@@ -10,11 +10,19 @@ import scala.collection.mutable.HashMap
 class Text(val text: String) {
 
 
-  val tokens = ArrayBuffer[Tuple2[String, Int]]()
-  val positions = HashMap[String, ArrayBuffer[Int]]()
+  var tokens: ArrayBuffer[Tuple2[String, Int]] = null
+  var positions: HashMap[String, ArrayBuffer[Int]] = null
 
 
+  /**
+    * Tokenize the text. For each token, keep track of the started character
+    * offset in the original text. For each type, keep track of the collection
+    * of offsets at which the type appears.
+    */
   def tokenize {
+
+    tokens = ArrayBuffer[Tuple2[String, Int]]()
+    positions = HashMap[String, ArrayBuffer[Int]]()
 
     var token = ""
     var start = 0
