@@ -7,11 +7,13 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.HashMap
 
 
-class Text(val text: String) {
+class Text(val text: String, tokenizeNow: Boolean = true) {
 
 
   var tokens: ArrayBuffer[Tuple2[String, Int]] = null
-  var positions: HashMap[String, ArrayBuffer[Int]] = null
+  var types: HashMap[String, ArrayBuffer[Int]] = null
+
+  if (tokenizeNow) tokenize
 
 
   /**
@@ -22,7 +24,7 @@ class Text(val text: String) {
   def tokenize {
 
     tokens = ArrayBuffer[Tuple2[String, Int]]()
-    positions = HashMap[String, ArrayBuffer[Int]]()
+    types = HashMap[String, ArrayBuffer[Int]]()
 
     var token = ""
     var start = 0
@@ -47,7 +49,7 @@ class Text(val text: String) {
 
         // Register the new token.
         tokens += Tuple2(token, start)
-        positions.getOrElseUpdate(token, ArrayBuffer[Int]()) += count
+        types.getOrElseUpdate(token, ArrayBuffer[Int]()) += count
 
         count += 1
         token = ""
