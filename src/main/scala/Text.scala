@@ -16,8 +16,7 @@ class Text(val text: String, tokenizeNow: Boolean = true) {
   if (tokenizeNow) tokenize
 
 
-  /**
-    * Tokenize the text. For each token, keep track of the started character
+  /** Tokenize the text. For each token, keep track of the started character
     * offset in the original text. For each type, keep track of the collection
     * of offsets at which the type appears.
     */
@@ -33,7 +32,7 @@ class Text(val text: String, tokenizeNow: Boolean = true) {
     for ((c, i) <- text.zipWithIndex) {
 
       // If the character is a letter, add it to the current token. If we're
-      // at the left boundary of a new token, store the character offset.
+      // at the left boundary of a new token, store the starting offset.
 
       if (c.isLetter) {
         if (token == "") start = i
