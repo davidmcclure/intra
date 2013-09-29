@@ -22,15 +22,16 @@ class Text:
         '''
 
         self.text = text
-        self.tokens = []
+        self.tokens = None
+        self.types = None
 
 
     def tokenize(self):
 
         '''
-        Populate the `tokens` attribute with a list of tuples, one for each
-        word in the text, each containing the word and the original character
-        offset of the word in the text.
+        Tokenize the text. For each token, store the starting character offset
+        in the original text. For each type, store the set of token offsets at
+        which the type appears.
         '''
 
         word = ''
