@@ -21,9 +21,9 @@ class Text:
             text [String]: The raw text string.
         '''
 
-        self.text = text
+        self.text   = text
         self.tokens = None
-        self.types = None
+        self.types  = None
 
 
     def tokenize(self):
@@ -35,7 +35,7 @@ class Text:
         '''
 
         self.tokens = []
-        self.types = {}
+        self.types  = {}
 
         token = ''
         start = 0
