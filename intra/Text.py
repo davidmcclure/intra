@@ -15,10 +15,10 @@ class Text:
     def __init__(self, text):
 
         '''
-        Store the raw text string and initialize the tokens list.
+        Store the raw text string and initialize the token/types containers.
 
-        :type text: string
-        :param text: The raw text string.
+        Arguments:
+            text [String]: The raw text string.
         '''
 
         self.text = text
@@ -29,21 +29,31 @@ class Text:
     def tokenize(self):
 
         '''
-        Tokenize the text. For each token, store the starting character offset
-        in the original text. For each type, store the set of token offsets at
-        which the type appears.
+        Tokenize the text. Store each token as a 2-tuple containing the token
+        and its starting character offset in the original text. For each type,
+        type, record the set of word offsets at which the type appears.
         '''
 
-        word = ''
+        self.tokens = []
+        self.types = {}
 
-        for i, character in enumerate(self.text):
+        token = ''
+        start = 0
+        count = 0
+
+        for i, c in enumerate(self.text):
 
             is_letter = re.match('[a-zA-Z]', character)
 
             if is_letter:
-                if len(word) == 0: offset = i
-                word += character
+                if token == '': start = i
+                word += c
 
-            if word and (not is_letter or i+1 == len(self.text)):
-                self.tokens.append((word, offset))
-                word = ''
+            if token != '' and (not is_letter or i+1 == len(self.text)):
+
+                # TODO: Lowercase/stem token.
+                self.tokens.append((token, offset))
+                self.types[token] = self.types.get(token, []).append(count)
+
+                count += 1
+                token = ''
