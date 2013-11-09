@@ -7,6 +7,12 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.HashMap
 
 
+/** An individual text in a corpus.
+  *
+  * @constructor Create a text from a string.
+  * @param text The raw string value.
+  * @param tokenizeNow If true, tokenize the text immediately.
+  */
 class Text(val text: String, tokenizeNow: Boolean = true) {
 
 
