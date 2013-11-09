@@ -3,7 +3,6 @@
 
 
 package com.mcclure.intra
-import scala.collection.mutable.ArrayBuffer
 
 
 class Corpus {

@@ -10,8 +10,8 @@ import scala.collection.mutable.HashMap
 class Text(val text: String, tokenizeNow: Boolean = true) {
 
 
-  var tokens: ArrayBuffer[Tuple2[String, Int]] = null
-  var types: HashMap[String, ArrayBuffer[Int]] = null
+  var tokenCharacterOffsets: ArrayBuffer[Tuple2[String, Int]] = null
+  var typeWordOffsets: HashMap[String, ArrayBuffer[Int]] = null
 
   if (tokenizeNow) tokenize
 
@@ -22,8 +22,8 @@ class Text(val text: String, tokenizeNow: Boolean = true) {
     */
   def tokenize {
 
-    tokens = ArrayBuffer[Tuple2[String, Int]]()
-    types = HashMap[String, ArrayBuffer[Int]]()
+    tokenCharacterOffsets = ArrayBuffer[Tuple2[String, Int]]()
+    typeWordOffsets = HashMap[String, ArrayBuffer[Int]]()
 
     var token = ""
     var start = 0
@@ -47,8 +47,8 @@ class Text(val text: String, tokenizeNow: Boolean = true) {
       if (token != "" && (!c.isLetter || i+1 == text.length)) {
 
         // Register the new token.
-        tokens += Tuple2(token, start)
-        types.getOrElseUpdate(token, ArrayBuffer[Int]()) += count
+        tokenCharacterOffsets += Tuple2(token, start)
+        typeWordOffsets.getOrElseUpdate(token, ArrayBuffer[Int]()) += count
 
         count += 1
         token = ""
