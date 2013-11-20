@@ -22,7 +22,6 @@ class Corpus {
     */
   def addText(text: Text) {
 
-    // Register the text.
     texts += text
 
     // Update the corpus-wide type counts.
