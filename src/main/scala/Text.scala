@@ -7,12 +7,6 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.HashMap
 
 
-/** An individual text in a corpus.
-  *
-  * @constructor Create a text from a string.
-  * @param text The raw string value.
-  * @param tokenizeNow If true, tokenize the text immediately.
-  */
 class Text(val text: String, tokenizeNow: Boolean = true) {
 
 
@@ -24,7 +18,7 @@ class Text(val text: String, tokenizeNow: Boolean = true) {
 
   /** Tokenize the text. For each token, keep track of the starting character
     * offset in the original text. For each type, keep track of the collection
-    * of offsets at which the type appears.
+    * of word offsets at which the type appears.
     */
   def tokenize {
 
