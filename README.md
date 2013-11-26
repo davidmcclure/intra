@@ -62,7 +62,7 @@ qlike('joy', 2) gives:
 
 ## Usage
 
-Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy]. (The pieces can be assembled using [virtualenv][virtualenv].)
+Intra requires Python 2.6, [IPython][ipython], [PyLab][pylab], [matplotlib][matplotlib], [NLTK][nltk], [Stemming][stemming], and [NumPy][numpy].
 
 Run iPython with PyLab:
 
@@ -240,17 +240,12 @@ Andrew's life. Though outwardly he continued to live in the same old
 way, inwardly he began a new life.
 ```
 
-Generally, it seems that Intra is good at doing "concept" or "theme" searches that layer up a cluster of terms. When I write papers, this is the level of abstraction that I tend to think at.
+Generally, Intra is good at doing "concept" or "theme" searches that layer up a cluster of terms. When I write papers, this is the level of abstraction that I tend to think at.
 
 ## Todo
 
-  * A real query parser, which would eliminate the need for different query functions and make it possible to combine different boolean operators. For example, queries like:
-
-    * "natasha AND (pierre OR andrei) NOT anatole"
-    * "natasha AND LIKE (joy OR love OR happy OR smile)"
-    * "hamlet AND LIKE (divine OR holy OR god)"
-
-  * A hosted, no-registration web application (structurally, like Voyant) that would let users create texts by pasting in a URL or a raw text stream. Users could then execute queries and browse the result signals / texts using an in-browser JavaScript application, perhaps using [Richshaw][rickshaw] for plotting.
+  * Rewrite in Scala, for performance.
+  * Instead of using something like MatPlotLib for the UI (simple, brittle), wrap the core searching library in a lightweight web app that can be run locally from the command line, or as a public-facing service. (Perhaps [Scalatra][scalatra]?)
 
 [ipython]: http://ipython.org/
 [pylab]: http://www.scipy.org/PyLab
@@ -260,4 +255,4 @@ Generally, it seems that Intra is good at doing "concept" or "theme" searches th
 [stemming]: http://pypi.python.org/pypi/stemming/1.0
 [numpy]: http://numpy.scipy.org/
 [wordnet]: http://wordnet.princeton.edu/
-[virtualenv]: http://pypi.python.org/pypi/virtualenv/
+[scalatra]: http://www.scalatra.org/
