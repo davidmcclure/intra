@@ -1,0 +1,210 @@
+[0m[[0minfo[0m] [0mUpdating {file:/Users/davidmcclure/Projects/Intra/}default-fc24fe...[0m
+[0m[[0mdebug[0m] [0m:: resolving dependencies :: intra#intra_2.10;0.0.1[0m
+[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom][0m
+[0m[[0mdebug[0m] [0m	validate = true[0m
+[0m[[0mdebug[0m] [0m	refresh = false[0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.10.2 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.2 in public[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scalatest#scalatest_2.10;2.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalatest#scalatest_2.10;2.0 {test=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0m		tried /Users/davidmcclure/.ivy2/local/org.scalatest/scalatest_2.10/2.0/ivys/ivy.xml[0m
+[0m[[0mdebug[0m] [0m	local: no ivy file found for org.scalatest#scalatest_2.10;2.0[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.pom[0m
+[0m[[0mdebug[0m] [0m	public: found md file for org.scalatest#scalatest_2.10;2.0[0m
+[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.pom (2.0)[0m
+[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.pom ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.pom[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.pom.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.pom[0m
+[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.scalatest#scalatest_2.10;2.0!scalatest_2.10.pom(pom.original) (236ms)[0m
+[0m[[0minfo[0m] [0mResolving org.sonatype.oss#oss-parent;7 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.sonatype.oss#oss-parent;7 {}[0m
+[0m[[0mdebug[0m] [0m		tried /Users/davidmcclure/.ivy2/local/org.sonatype.oss/oss-parent/7/ivys/ivy.xml[0m
+[0m[[0mdebug[0m] [0m	local: no ivy file found for org.sonatype.oss#oss-parent;7[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom[0m
+[0m[[0mdebug[0m] [0m	public: found md file for org.sonatype.oss#oss-parent;7[0m
+[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (7)[0m
+[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom[0m
+[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.sonatype.oss#oss-parent;7!oss-parent.pom(pom.original) (265ms)[0m
+[0m[[0mdebug[0m] [0m		tried /Users/davidmcclure/.ivy2/local/org.sonatype.oss/oss-parent/7/jars/oss-parent.jar[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.jar[0m
+[0m[[0mdebug[0m] [0mCLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.jar[0m
+[0m[[0mdebug[0m] [0m		tried /Users/davidmcclure/.ivy2/local/org.scalatest/scalatest_2.10/2.0/jars/scalatest_2.10.jar[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar[0m
+[0m[[0mdebug[0m] [0m	found org.scalatest#scalatest_2.10;2.0 in public[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->compile][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m		tried /Users/davidmcclure/.ivy2/local/org.scala-lang/scala-reflect/2.10.0/ivys/ivy.xml[0m
+[0m[[0mdebug[0m] [0m	local: no ivy file found for org.scala-lang#scala-reflect;2.10.0[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom[0m
+[0m[[0mdebug[0m] [0m	public: found md file for org.scala-lang#scala-reflect;2.10.0[0m
+[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom (2.10.0)[0m
+[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom[0m
+[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.10.0!scala-reflect.pom(pom.original) (250ms)[0m
+[0m[[0mdebug[0m] [0m		tried /Users/davidmcclure/.ivy2/local/org.scala-lang/scala-reflect/2.10.0/jars/scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.0 in public[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->master][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'provided'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'optional'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [runtime-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [test-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->compile][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.0->org.scala-lang#scala-reflect;2.10.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies intra#intra_2.10;0.0.1->org.scalatest#scalatest_2.10;2.0 [test->master][0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.0 {optional=[compile(*), master(*)]} => dependency: org.scala-lang#scala-compiler;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'plugin'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [plugin][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'sources'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [sources][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'docs'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [docs][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'pom'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for intra#intra_2.10;0.0.1 [pom][0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/intra/intra_2.10/0.0.1/resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar[0m
+[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scalatest#scalatest_2.10;2.0!scalatest_2.10.jar (55922ms)[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar[0m
+[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.10.0!scala-reflect.jar (24885ms)[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 1947ms :: artifacts dl 80815ms[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 compile produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 runtime produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 test produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 provided produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 optional produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 compile-internal produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 runtime-internal produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 test-internal produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 plugin produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 sources produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 docs produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for intra#intra_2.10;0.0.1 pom produced in /Users/davidmcclure/Projects/Intra/target/resolution-cache/reports/intra-intra_2.10-pom.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (1947ms resolve - 80815ms download)[0m
+[0m[[0minfo[0m] [0mDone updating.[0m

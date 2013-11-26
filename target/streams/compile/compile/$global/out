@@ -1,0 +1,32 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set()[0m
+[0m[[0mdebug[0m] [0m	modified: Set(/Users/davidmcclure/Projects/Intra/src/main/scala/Text.scala, /Users/davidmcclure/Projects/Intra/src/main/scala/PorterStemmer.scala)[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set(/Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/Text$$anonfun$tokenize$2$$anonfun$apply$1.class, /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/Text$.class, /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/PorterStemmer.class, /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/Text$$anonfun$tokenize$2.class, /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/Text$$anonfun$tokenize$1.class, /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/Corpus.class, /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes/com/mcclure/intra/Text.class)[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/Users/davidmcclure/Projects/Intra/src/main/scala/Text.scala, /Users/davidmcclure/Projects/Intra/src/main/scala/PorterStemmer.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set(/Users/davidmcclure/Projects/Intra/src/main/scala/Text.scala, /Users/davidmcclure/Projects/Intra/src/main/scala/PorterStemmer.scala, /Users/davidmcclure/Projects/Intra/src/main/scala/Corpus.scala)[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/Users/davidmcclure/Projects/Intra/src/main/scala/Text.scala, /Users/davidmcclure/Projects/Intra/src/main/scala/PorterStemmer.scala, /Users/davidmcclure/Projects/Intra/src/main/scala/Corpus.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 3 sources: invalidated sources (3) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 3 Scala sources to /Users/davidmcclure/Projects/Intra/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 3a80d2e2, interfacing (CompilerInterface) with Scala compiler version 2.10.2[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/Users/davidmcclure/Projects/Intra/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar:/Users/davidmcclure/.sbt/boot/scala-2.10.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/Users/davidmcclure/Projects/Intra/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0mScala compilation took 1.058594 s[0m
+[0m[[0mdebug[0m] [0mStep 2 changed sources and immdediate dependencies:[0m
+[0m[[0mdebug[0m] [0m	Set(/Users/davidmcclure/Projects/Intra/src/main/scala/PorterStemmer.scala)[0m
+[0m[[0mdebug[0m] [0mNon-trivial strongly connected components: [0m
+[0m[[0mdebug[0m] [0m	[0m
+[0m[[0mdebug[0m] [0mStep 2 invalidated sources:[0m
+[0m[[0mdebug[0m] [0m	Set(/Users/davidmcclure/Projects/Intra/src/main/scala/PorterStemmer.scala)[0m

@@ -1,0 +1,9 @@
+[0m[[0minfo[0m] [0m[32mTextSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mA Text[0m[0m
+[0m[[0minfo[0m] [0m[32m  when instantiated[0m[0m
+[0m[[0minfo[0m] [0m[32m  - should tokenize immediately by default[0m[0m
+[0m[[0minfo[0m] [0m[32m  - should not tokenize immediately when `tokenizeNow` is false[0m[0m
+[0m[[0minfo[0m] [0m[32m  when tokenized[0m[0m
+[0m[[0minfo[0m] [0m[32m  - should cache character offset of each individual token[0m[0m
+[0m[[0minfo[0m] [0m[32m  - should cache the set of instance offsets for each unique type[0m[0m
+[0m[[0minfo[0m] [0m[32m  - should ignore non-letter characters[0m[0m
