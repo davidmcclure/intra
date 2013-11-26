@@ -2,6 +2,10 @@
 
 Intra experiments with a new way of searching inside of long documents - think of it as a souped-up version of Control+F. Instead of chopping long texts into short segments and returning ordered subsets of the sub-documents, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a Y-axis value for each word position. In the final presentation of the result, the user can bore down to specific textual passages by zooming in and out and clicking anywhere on the signal graph, which "focuses" the text to the position that corresponds to the x-axis offset of the click.
 
+For example, searching for "I me mine self" in _Leaves of Grass_ gives results like this:
+
+![whitman](http://dclure.org/wp-content/uploads/2012/07/whitman.png)
+
 This approach has couple of advantages:
 
   1. First, the concept of a "document" is of limited usefulness when the object of analysis _is itself a document_ (or a comparatively small set of documents - e.g., the collected works of Shakespeare). The problem is that it's impossible to pick a single segment length that's optimal for all queries - relevance doesn't distribute in evenly-sized chunks inside of texts, meaning that there's no single "unit" to return as a result. Trying to pick one will always favor one type of result over another - if you treat a text as a series of sentences, the search results won't represent high-level patterns in meaning distribution at the level of chapters or sections (e.g., war vs. peace in _War and Peace_). But if you index large sub-documents, you iron over important fluctuations at the sentence / phrase level.
