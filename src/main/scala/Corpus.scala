@@ -21,14 +21,7 @@ class Corpus {
     * @param text The new text.
     */
   def addText(text: Text) {
-
     texts += text
-
-    // Update the corpus-wide type counts.
-    typeCounts ++ text.typeWordOffsets.map {
-      case (k, v) => k -> (v.length + typeCounts.getOrElse(k, 0))
-    }
-
   }
 
 

@@ -18,8 +18,8 @@ class TextSpec extends WordSpec with Matchers {
 
         val text = new Text("text")
 
-        text.tokenCharacterOffsets should not be (null)
-        text.typeWordOffsets should not be (null)
+        text.tokens should not be (null)
+        text.types should not be (null)
 
       }
 
@@ -27,8 +27,8 @@ class TextSpec extends WordSpec with Matchers {
 
         val text = new Text("text", false)
 
-        text.tokenCharacterOffsets should be (null)
-        text.typeWordOffsets should be (null)
+        text.tokens should be (null)
+        text.types should be (null)
 
       }
 
@@ -36,11 +36,11 @@ class TextSpec extends WordSpec with Matchers {
 
     "tokenized" should {
 
-      "populate token character offsets" in {
+      "record tokens -> character offsets" in {
 
         val text = new Text("aa bb cc")
 
-        text.tokenCharacterOffsets should equal (ArrayBuffer(
+        text.tokens should equal (ArrayBuffer(
           ("aa", 0),
           ("bb", 3),
           ("cc", 6)
@@ -48,11 +48,11 @@ class TextSpec extends WordSpec with Matchers {
 
       }
 
-      "populate type word offsets" in {
+      "record types -> word offsets" in {
 
         val text = new Text("a b c a b c a b c")
 
-        text.typeWordOffsets should equal (HashMap(
+        text.types should equal (HashMap(
           "a" -> ArrayBuffer(0, 3, 6),
           "b" -> ArrayBuffer(1, 4, 7),
           "c" -> ArrayBuffer(2, 5, 8)
@@ -64,13 +64,13 @@ class TextSpec extends WordSpec with Matchers {
 
         val text = new Text("a 1 b & c @")
 
-        text.tokenCharacterOffsets should equal (ArrayBuffer(
+        text.tokens should equal (ArrayBuffer(
           ("a", 0),
           ("b", 4),
           ("c", 8)
         ))
 
-        text.typeWordOffsets should equal (HashMap(
+        text.types should equal (HashMap(
           "a" -> ArrayBuffer(0),
           "b" -> ArrayBuffer(1),
           "c" -> ArrayBuffer(2)
