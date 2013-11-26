@@ -1,6 +1,6 @@
 # Intra
 
-Intra experiments with a new way of searching inside of documents - think of it as a souped-up version of Control+F. Instead of chopping texts into short segments and returning ordered subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a Y-axis value for each word position. In the final presentation of the result, the user can bore down to specific textual passages by zooming in and out and clicking anywhere on the signal graph, which focuses the text to the position that corresponds to the x-axis offset of the click.
+Intra experiments with a new way of searching inside of documents - think of it as a souped-up version of Control+F. Instead of chopping texts into short segments and returning ordered subsets of the segments, Intra models relevancy by converting search queries into two-dimensional "signals" - each word in the text is mapped onto an integer on the X axis, and Intra computes a Y-axis value for each word position. In the final presentation of the result, the user can bore down to specific textual passages by zooming / clicking anywhere on the signal graph, which focuses the text to the position that corresponds to the x-axis offset of the click.
 
 For example, searching for `I me mine self` in _Leaves of Grass_ gives results like this:
 
