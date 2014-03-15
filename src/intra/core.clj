@@ -43,15 +43,21 @@
 (defn get-type-counts
   "Map unique types to the number of times the type occurs in the text."
   [types]
-  (reduce (fn [types [k v]]
-            (assoc types k (count v))) {} types))
+  (reduce
+    (fn [types [k v]]
+      (assoc types k (count v)))
+    {}
+    types))
 
 (defn get-type-heights
   "For each type, compute a starting height on the Y-axis for decay curves."
   [types adjustor]
-  (let [type-counts (get-type-counts types)
-        counts (vals type-counts)
-        min-ct (reduce min counts)
-        max-ct (reduce max counts)]
-    (reduce (fn [types [k v]]
-              (assoc types k (adjustor v min-ct max-ct))) {} type-counts)))
+  (let [counts (get-type-counts types)
+        values (vals counts)
+        min-count (reduce min values)
+        max-count (reduce max values)]
+    (reduce
+      (fn [types [k v]]
+        (assoc types k (adjustor min-count max-count)))
+      {}
+      counts)))
