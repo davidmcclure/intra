@@ -5,7 +5,8 @@
   "Add a new token (with left-side character offset) to a list of tokens."
   [tokens new-token right-offset]
   (conj tokens {:token (porter/stem new-token)
-                :offset (- right-offset (count new-token))}))
+                :left (- right-offset (count new-token))
+                :right right-offset}))
 
 (defn get-tokens
   "Tokenize a string, storing the original character offset for each token."
@@ -43,4 +44,16 @@
 (defn get-term-counts
   "Map unique terms to the number of times the type occurs in the text."
   [terms]
-  (into {} (for [[term offsets] terms] [term (count offsets)])))
+  (into {}
+    (for [[term offsets] terms]
+      [term (count offsets)])))
+
+(defn get-term-weights
+  "Map unique terms to weight between 0 and 1."
+  [terms adjustor]
+  (let [counts (vals (get-term-counts terms))
+        min-count (reduce min counts)
+        max-count (reduce max counts)]
+    (into {}
+      (for [[term offsets] terms]
+        [term (adjustor (count offsets) min-count max-count)]))))
