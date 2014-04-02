@@ -27,8 +27,8 @@
               (recur offset "" tokens))))
         tokens))))
 
-(defn get-types
-  "Map unique types to a vector of token instance offsets in the text."
+(defn get-terms
+  "Map unique terms to a vector of token instance offsets in the text."
   [tokens]
   (let [word-count (count tokens)]
     (loop [offset 0
@@ -40,24 +40,7 @@
             (recur (inc offset) (assoc types token [offset]))))
         types))))
 
-(defn get-type-counts
-  "Map unique types to the number of times the type occurs in the text."
-  [types]
-  (reduce
-    (fn [types [k v]]
-      (assoc types k (count v)))
-    {}
-    types))
-
-(defn get-type-heights
-  "For each type, compute a starting height on the Y-axis for decay curves."
-  [types adjustor]
-  (let [counts (get-type-counts types)
-        values (vals counts)
-        min-count (reduce min values)
-        max-count (reduce max values)]
-    (reduce
-      (fn [types [k v]]
-        (assoc types k (adjustor min-count max-count)))
-      {}
-      counts)))
+(defn get-term-counts
+  "Map unique terms to the number of times the type occurs in the text."
+  [terms]
+  (into {} (for [[term offsets] terms] [term (count offsets)])))
