@@ -1,0 +1,8 @@
+GDAL==1.10.1
+gnureadline==6.3.3
+ipython==2.1.0
+transifex-client==0.10
+virtualenv==1.11.4
+wsgiref==0.1.2
+wxPython==3.0.0.0
+wxPython-common==3.0.0.0
