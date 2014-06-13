@@ -1,5 +1,10 @@
 
 
+import intra.utils as utils
+from nltk.stem import PorterStemmer
+import re
+
+
 class Text(object):
 
     def __init__(self, text):
@@ -23,4 +28,23 @@ class Text(object):
         self.tokens = []
         self.offsets = {}
 
-        pass # TODO
+        # Strip tags and downcase.
+        text = utils.strip_tags(self.text).lower()
+        porter = PorterStemmer()
+
+        # Match continuous letters.
+        pattern = re.compile('[a-z]+')
+        for i, match in enumerate(re.finditer(pattern, text)):
+
+            stemmed = porter.stem(match.group(0))
+
+            # Token:
+            self.tokens.append({
+                'token':    stemmed,
+                'left':     match.start(),
+                'right':    match.end()
+            })
+
+            # Token -> offset:
+            if stemmed in self.offsets: self.offsets[stemmed].append(i)
+            else: self.offsets[stemmed] = [i]
