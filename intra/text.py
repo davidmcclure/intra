@@ -2,6 +2,7 @@
 
 import intra.utils as utils
 from nltk.stem import PorterStemmer
+import requests
 import re
 
 
@@ -30,10 +31,11 @@ class Text(object):
 
         # Strip tags and downcase.
         text = utils.strip_tags(self.text).lower()
+
+        pattern = re.compile('[a-z]+')
         porter = PorterStemmer()
 
-        # Match continuous letters.
-        pattern = re.compile('[a-z]+')
+        # Walk words in the text.
         for i, match in enumerate(re.finditer(pattern, text)):
 
             stemmed = porter.stem(match.group(0))
@@ -48,3 +50,27 @@ class Text(object):
             # Token -> offset:
             if stemmed in self.offsets: self.offsets[stemmed].append(i)
             else: self.offsets[stemmed] = [i]
+
+    @classmethod
+    def from_file(cls, path):
+
+        """
+        Create a text from a filepath.
+
+        :param cls: The Text class.
+        :param path: The filepath.
+        """
+
+        return cls(open(path, 'r').read())
+
+    @classmethod
+    def from_url(cls, url):
+
+        """
+        Create a text from a URL.
+
+        :param cls: The Text class.
+        :param path: The URL.
+        """
+
+        return cls(requests.get(url).text)
