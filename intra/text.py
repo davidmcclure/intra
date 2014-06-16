@@ -1,12 +1,43 @@
 
 
-import intra.utils as utils
 from nltk.stem import PorterStemmer
-import requests
+from scipy import stats
+from matplotlib import pylab
+
+import numpy
 import re
+import intra.utils as utils
+import requests
 
 
 class Text(object):
+
+
+    @classmethod
+    def from_file(cls, path):
+
+        """
+        Create a text from a filepath.
+
+        :param cls: The Text class.
+        :param path: The filepath.
+        """
+
+        return cls(open(path, 'r').read())
+
+
+    @classmethod
+    def from_url(cls, url):
+
+        """
+        Create a text from a URL.
+
+        :param cls: The Text class.
+        :param path: The URL.
+        """
+
+        return cls(requests.get(url).text)
+
 
     def __init__(self, text):
 
@@ -18,6 +49,7 @@ class Text(object):
 
         self.text = text
         self.tokenize()
+
 
     def tokenize(self):
 
@@ -51,26 +83,37 @@ class Text(object):
             if stemmed in self.offsets: self.offsets[stemmed].append(i)
             else: self.offsets[stemmed] = [i]
 
-    @classmethod
-    def from_file(cls, path):
+
+    def get_bare_tokens(self):
 
         """
-        Create a text from a filepath.
-
-        :param cls: The Text class.
-        :param path: The filepath.
+        Get a list of the raw, unadorned tokens in the text.
         """
 
-        return cls(open(path, 'r').read())
+        return [token['token'] for token in self.tokens]
 
-    @classmethod
-    def from_url(cls, url):
+
+    def scipy_kde(self, query, resolution):
 
         """
-        Create a text from a URL.
+        Scipy kernel density estimation.
 
-        :param cls: The Text class.
-        :param path: The URL.
+        :param query: A query text.
+        :param samples: The number of points to evaluate.
         """
 
-        return cls(requests.get(url).text)
+        # Combine the offsets of all the terms in the query.
+        offsets = []
+        for token in query.get_bare_tokens():
+            offsets += self.offsets[token]
+
+        # Generate evenly-spaced sampling points.
+        samples = numpy.linspace(0, len(self.tokens), resolution)
+
+        # Initialize the KDE.
+        kde = stats.gaussian_kde(sorted(offsets))
+        result = kde.evaluate(samples)
+
+        # TODO|dev
+        pylab.plot(result)
+        pylab.show()
