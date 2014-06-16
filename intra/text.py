@@ -1,8 +1,8 @@
 
 
 from nltk.stem import PorterStemmer
+from sklearn.neighbors import KernelDensity
 from scipy import stats
-from matplotlib import pylab
 
 import numpy
 import re
@@ -93,27 +93,36 @@ class Text(object):
         return [token['token'] for token in self.tokens]
 
 
-    def scipy_kde(self, query, resolution):
+    def get_query_offsets(self, query):
+
+        """
+        Given a query text, compute an ordered list of offsets in this text
+        where words in the query text appear.
+
+        :param query: A query text.
+        """
+
+        offsets = []
+        for token in query.get_bare_tokens():
+            offsets += self.offsets[token]
+
+        return sorted(offsets)
+
+
+    def kde_scipy(self, query, resolution=1000):
 
         """
         Scipy kernel density estimation.
 
         :param query: A query text.
-        :param samples: The number of points to evaluate.
+        :param resolution: The number of points to evaluate.
         """
 
-        # Combine the offsets of all the terms in the query.
-        offsets = []
-        for token in query.get_bare_tokens():
-            offsets += self.offsets[token]
+        offsets = self.get_query_offsets(query)
 
         # Generate evenly-spaced sampling points.
         samples = numpy.linspace(0, len(self.tokens), resolution)
 
-        # Initialize the KDE.
-        kde = stats.gaussian_kde(sorted(offsets))
-        result = kde.evaluate(samples)
-
-        # TODO|dev
-        pylab.plot(result)
-        pylab.show()
+        # Estimate the density.
+        kde = stats.gaussian_kde(offsets)
+        return kde.evaluate(samples)
